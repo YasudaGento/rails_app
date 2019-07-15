@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    container_name: "db"
+    environment:
+      MYSQL_ROOT_PASSWORD: yasuda_app
+      MYSQL_DATABASE: root
+  rails_app:
+    build: ./rails_app
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./rails_app:/var/www/html/rails_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
