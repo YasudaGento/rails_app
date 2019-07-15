@@ -10,7 +10,7 @@ services:
     build: ./rails_app
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - ./rails_app:/var/www/html/rails_app
+      - ./rails_app:/rails_app
     ports:
       - "3000:3000"
     depends_on:
