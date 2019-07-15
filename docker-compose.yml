@@ -6,6 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: yasuda_app
       MYSQL_DATABASE: root
+
   rails_app:
     build: ./rails_app
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -17,3 +18,15 @@ services:
       - db
     stdin_open: true
     tty: true
+
+  phpadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    ports:
+      - "9999:80"
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: sfk0105sql
