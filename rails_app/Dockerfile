@@ -21,14 +21,14 @@ ADD Gemfile /rails_app/Gemfile
 ADD Gemfile.lock /rails_app/Gemfile.lock
 
 # yarn install
-# ADD yarn.lock /rails_app/yarn.lock
-# RUN yarn install --dev
+ADD yarn.lock /rails_app/yarn.lock
+RUN yarn install --dev
 
 # update bundler
 RUN gem update bundler
 RUN bundle install 
 
-# # # for chrome driver
-# # RUN apt-get install -y libnss3-dev
+# for chrome driver
+RUN apt-get install -y libnss3-dev
 
-# # RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
