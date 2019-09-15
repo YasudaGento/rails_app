@@ -32,3 +32,6 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# ソケット通信用に追加
+bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
