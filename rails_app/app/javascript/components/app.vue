@@ -15,17 +15,16 @@ p {
 
 <script lang="ts">
 import { Table, TableColumn } from 'element-ui'
+import { Component, Prop, Vue, Emit } from "vue-property-decorator"
 
-export default {
-  components: {
-    'el-table': Table,
-    'el-table-column': TableColumn,
-  },
-
-  data: function () {
-    return {
-      message: [{hello: "Hello Vue!"}]
+@Component({
+    components: {
+      "el-table": Table,
+      "el-table-column": TableColumn
     }
-  }
+  })
+
+export default class List extends Vue {
+  private message: Object[] = [{hello: "Hello Vue!"}]
 }
 </script>
