@@ -6,7 +6,8 @@
       <div class="panel-title">一覧</div>
     </div>
     <div class="panel-body">
-      <list :info="info">
+      <list v-if="mounted"
+            :info="info">
       </list>
     </div>
   </div>

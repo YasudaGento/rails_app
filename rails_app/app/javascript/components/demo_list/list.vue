@@ -3,7 +3,9 @@
 <template>
   <div v-cloak>
     <el-table :data="info" max-height="700" border style="width:100%">
-      <el-table-column prop="name" label="name" sortable></el-table-column>
+      <el-table-column prop="name" label="名前" sortable></el-table-column>
+      <el-table-column prop="id" label="ID" sortable></el-table-column>
+      <el-table-column prop="created_at" label="日付" sortable></el-table-column>
     </el-table>
   </div>
 </template>

@@ -6,6 +6,7 @@ import http from '../libs/http.ts'
 import param_maker from '../libs/param_maker.ts'
 
 locale.use(lang)
+type Parameter = { [s: string]: any };
 
 new Vue({
   el: "#demo-list",
@@ -15,10 +16,11 @@ new Vue({
   },  
 
   data: {
-    info: <Object[]>[{name: "yasuda"}],
+    info: <Object[]>[],
     q: <Object>{},
     limit: <Number>0,
-    offset: <Number>0
+    offset: <Number>0,
+    mounted: false
   },
 
   created: function(): void { 
@@ -34,14 +36,12 @@ new Vue({
           limit: this.limit
       })
       http.fetch(url, params,)
-          .then((res) => { })
+          .then((res) => {this.successFetch(res) })
     },
 
-    qs: function(params){
-      return  {
-           params,
-           paramsSerializer: function (params) { return Qs.stringify(params, { arrayFormat: 'brackets' }); }
-       }
+    successFetch: function(res: Parameter){
+      this.info = res.data.info;
+      this.mounted = true
     },
   }
 });
