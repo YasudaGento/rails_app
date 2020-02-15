@@ -1,0 +1,2 @@
+class DemoList < ApplicationRecord
+end

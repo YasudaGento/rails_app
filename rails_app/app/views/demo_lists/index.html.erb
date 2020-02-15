@@ -1,0 +1,16 @@
+<h1>一覧</h1>
+<div id="demo-list" v-cloak>
+  <!-- [ 一覧参照 ] -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">一覧</div>
+    </div>
+    <div class="panel-body">
+      <list v-if="mounted"
+            :info="info">
+      </list>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'demo_list' %>

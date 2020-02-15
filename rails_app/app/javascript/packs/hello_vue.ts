@@ -15,6 +15,10 @@ new Vue({
     "app": App
   },
 
+  data: {
+    message: <Object[]>[{name: "yasuda"}],
+  },
+
   created: function(): void { console.log("hello_app.ts") }  
 });
 
