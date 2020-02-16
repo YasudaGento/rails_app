@@ -18,7 +18,7 @@ destroy:
 
 .PHONY: eslint
 eslint:
-	@docker exec rails_app npm run lint "app/javascript/**/*.{js,vue}"
+	@docker exec rails_app npm run lint "app/javascript/**/*.{js,vue,ts}"
 
 .PHONY: rubocop
 rubocop:

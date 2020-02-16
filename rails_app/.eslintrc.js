@@ -4,8 +4,8 @@ module.exports = {
         "es6": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:vue/essential"
+        "plugin:@typescript-eslint/eslint-recommended",
+        'prettier/@typescript-eslint'
     ],
     "globals": {
         "Atomics": "readonly",
@@ -13,10 +13,13 @@ module.exports = {
     },
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        'parser': '@typescript-eslint/parser',
     },
+    "parser":  'vue-eslint-parser',
     "plugins": [
-        "vue"
+        "vue",
+        "@typescript-eslint"
     ],
     "rules": {
     }
