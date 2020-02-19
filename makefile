@@ -16,6 +16,14 @@ destroy:
 	sh shell/destroy_files.sh
 	@exit 0
 
+.PHONY: eslint
+eslint:
+	@docker exec rails_app npm run lint "app/javascript/**/*.{js,vue,ts}"
+
+.PHONY: rubocop
+rubocop:
+	@docker exec rails_app rubocop --lint --fail-level W --display-only-fail-level-offenses
+
 # 被らせないためのコマンド(.PHONYT)
 .PHONYT: help
 help:
