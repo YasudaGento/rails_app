@@ -32,7 +32,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     window = Capybara.current_session.driver.browser.manage.window
     window.resize_to(width+100, height+100)
 
-    page.save_screenshot (name)
+    page.save_screenshot(name)
   end
 
   # driver設定
