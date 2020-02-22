@@ -17,10 +17,9 @@ new Vue({
 
   data: {
     info: <Object[]>[],
-    q: <Object>{},
     limit: <Number>0,
     offset: <Number>0,
-    mounted: false
+    mounted: <Boolean>false,
   },
 
   created: function(): void { 
@@ -31,7 +30,6 @@ new Vue({
     fetchList: function(){
       const url = '/demo_lists/get'
       const params = param_maker.get({
-          q: this.query,
           offset: this.offset,
           limit: this.limit
       })
