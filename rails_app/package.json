@@ -18,12 +18,39 @@
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "~5.0.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^24.8.0",
     "qs": "^6.6.0",
+    "vue-jest": "^3.0.4",
     "webpack-dev-server": "2.11.2"
   },
   "scripts": {
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "test/js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.vue$": "vue-jest"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/app/javascript/$1"
+    }
   }
 }

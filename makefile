@@ -36,6 +36,10 @@ eslint:
 rubocop:
 	@docker exec rails_app rubocop --lint --fail-level W --display-only-fail-level-offenses
 
+.PHONY: jest
+jest:
+	@docker exec rails_app yarn test --colors --verbose
+
 # 被らせないためのコマンド(.PHONYT)
 .PHONYT: help
 help:
