@@ -16,6 +16,18 @@ destroy:
 	sh shell/destroy_files.sh
 	@exit 0
 
+.PHONY: down
+down:
+	@docker-compose down
+
+.PHONY: build
+build:
+	@docker-compose build
+
+.PHONY: up
+up:
+	@docker-compose up
+
 .PHONY: eslint
 eslint:
 	@docker exec rails_app npm run lint "app/javascript/**/*.{js,vue,ts}"
@@ -23,6 +35,10 @@ eslint:
 .PHONY: rubocop
 rubocop:
 	@docker exec rails_app rubocop --lint --fail-level W --display-only-fail-level-offenses
+
+.PHONY: jest
+jest:
+	@docker exec rails_app yarn test --colors --verbose
 
 # 被らせないためのコマンド(.PHONYT)
 .PHONYT: help
