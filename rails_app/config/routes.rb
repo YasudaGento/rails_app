@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   resources :application
 
-  # スポ勉
   resources :demo_lists, only: [:index]
   namespace :demo_lists do
+    get :get
+  end
+
+  resources :users, only: [:index]
+  namespace :users do
     get :get
   end
 end
