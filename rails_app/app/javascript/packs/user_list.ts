@@ -2,6 +2,7 @@ import Vue from "vue/dist/vue.esm";
 import lang from 'element-ui/lib/locale/lang/ja'
 import locale from 'element-ui/lib/locale'
 import List from "../components/user/list.vue";
+import Search from "../components/user/search.vue";
 import http from '../libs/http.ts'
 import param_maker from '../libs/param_maker.ts'
 
@@ -12,7 +13,8 @@ new Vue({
   el: "#user-list",
 
   components: {
-    "list": List
+    "list": List,
+    "search": Search
   },  
 
   data: {
@@ -20,6 +22,7 @@ new Vue({
     limit: <Number>0,
     offset: <Number>0,
     mounted: <Boolean>false,
+    query: <Object>{}
   },
 
   created: function(): void { 
@@ -31,7 +34,8 @@ new Vue({
       const url = '/users/get'
       const params = param_maker.get({
         offset: this.offset,
-        limit: this.limit
+        limit: this.limit,
+        q: this.query
       })
       http.fetch(url, params,)
           .then(this.successFetch)
@@ -45,6 +49,15 @@ new Vue({
 
     errorFetch: function(err: Parameter){
       console.log(err)
-    }
+    },
+
+    onSearch: function(): void{
+      this.fetchList();
+    },
+
+    onClear: function(): void{
+      this.query = {}
+      this.fetchList();
+    },
   }
 });

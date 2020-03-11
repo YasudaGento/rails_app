@@ -6,8 +6,10 @@ class User < ApplicationRecord
       return "rails_app_development.users"
     end
 
-    def excute_list_sql
+    def excute_list_sql q
       self.select("#{self.sql_t}.name as user_name")
+          .ransack(q)
+          .result()
     end
   end
 end

@@ -1,5 +1,18 @@
 <h1>ユーザー一覧</h1>
 <div id="user-list" v-cloak>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="panel-title">検索</span>
+    </div>
+    <div class="panel-body">
+      <!--機能: 検索 -->
+      <search :query = "query"
+               @on-search = "onSearch"
+               @on-clear = "onClear">
+      </search>
+    </div>
+  </div>
+
   <!-- [ 一覧参照 ] -->
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -14,3 +27,4 @@
 </div>
 
 <%= javascript_pack_tag 'user_list' %>
+<%= stylesheet_pack_tag 'user_list' %>

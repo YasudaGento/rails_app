@@ -1,7 +1,7 @@
 class UserService < ApplicationService
   class << self
-    def get
-      User.excute_list_sql()
+    def get q
+      User.excute_list_sql(q)
     end
   end
 end
