@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # demo_list data
-DemoList.create(name: "yasuda")
+require "./db/seeds/user.rb"

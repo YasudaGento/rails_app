@@ -1,0 +1,7 @@
+<% 50.times do |n| %>
+user_<%= n %>:
+  name: <%= "テスト太郎#{n}" %>
+  mail: <%= "user#{n}@example.com" %>
+  password: <%= SecureRandom.alphanumeric(10) %>
+  created_at: <%= DateTime.parse('2020-03-15T12:00:00') - n %>
+<% end %>

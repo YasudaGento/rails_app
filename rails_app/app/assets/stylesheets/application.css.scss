@@ -15,3 +15,54 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ body {
+  padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loader-wrapper{
+  right: auto !important;
+  bottom: auto !important;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+}
+
+.field{
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* navbar 全体の背景色とボーダーカラー */
+.navbar-default {
+  background-color: #409e5d;
+}
+
+/* navbar テキストカラー */
+.navbar-default .navbar-nav > li > a {
+  color: #ffffffff;
+}
+
+/* navbar hover,focus時のテキストカラー */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffffff;
+  background-color: transparent;
+}
+
+/* navbar ドロップダウン(親)のカラー */
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+  color: #f0f0f0f0;
+  background-color:#006666;
+}
