@@ -13,7 +13,7 @@
     <el-form @submit.native.prevent="onSearch">
       <el-row>
         <el-col :span="3">
-          <el-input v-model="query.name_cont" placeholder="ユーザー名" />
+          <el-input id='user_name' v-model="query.name_cont" placeholder="ユーザー名" />
         </el-col>
       </el-row>
       <el-row style="padding-top:10px">

@@ -7,7 +7,9 @@ class User < ApplicationRecord
     end
 
     def excute_list_sql q
-      self.select("#{self.sql_t}.name as user_name")
+      self.select("#{self.sql_t}.name as user_name",
+                  "#{self.sql_t}.created_at")
+          .order("#{self.sql_t}.created_at DESC")
           .ransack(q)
           .result()
     end

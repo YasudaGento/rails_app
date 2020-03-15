@@ -43,7 +43,7 @@ new Vue({
       http.fetch(url, params,)
           .then(this.successFetch)
           .catch(this.errorFetch)
-          .finally(loading.close());
+          .finally(() => { loading.close() });
     },
 
     successFetch: function(res: Parameter): void{
