@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   namespace :users do
     get :get
   end
+
+  # スラック通知
+  namespace :slacks do
+    post :notificate
+  end
 end

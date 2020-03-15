@@ -5,6 +5,7 @@ import List from "../components/user/list.vue";
 import Search from "../components/user/search.vue";
 import http from '../libs/http.ts'
 import param_maker from '../libs/param_maker.ts'
+import error_notification from '../libs/error_notification.ts'
 
 locale.use(lang)
 type Parameter = { [s: string]: any };
@@ -48,7 +49,11 @@ new Vue({
     },
 
     errorFetch: function(err: Parameter){
-      console.log(err)
+      error_notification.to_slack({
+        file_name: "contact.js",
+        function_name: "onRead()",
+        error: err
+      });
     },
 
     onSearch: function(): void{
