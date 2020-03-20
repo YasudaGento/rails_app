@@ -16,8 +16,16 @@
   <!-- [ 一覧参照 ] -->
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="panel-title">一覧</div>
+      <span class="panel-title">({{count}}件)</span>
     </div>
+    <pagination-btn :limit='limit'
+                    :offset='offset'
+                    :count='count'
+                    @prev-click="prevClick"
+                    @next-click="nextClick"
+                    @current-change='currentChange'>
+    </pagination-btn>
+
     <div class="panel-body">
       <list v-if="mounted"
             :info="info">

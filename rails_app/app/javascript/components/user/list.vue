@@ -3,7 +3,7 @@
 <template>
   <div v-cloak>
     <el-table :data="info" max-height="700" border style="width:100%">
-      <el-table-column prop="user_name" label="ユーザー名" sortable></el-table-column>
+      <el-table-column prop="user_name" label="ユーザー名" sortable/>
     </el-table>
   </div>
 </template>
@@ -21,6 +21,5 @@
 
   export default class List extends Vue {
     @Prop() info!: Object[]
-
   }
 </script>
