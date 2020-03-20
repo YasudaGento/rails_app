@@ -57,8 +57,8 @@ new Vue({
 
     errorFetch: function(err: Parameter): void{
       error_notification.to_slack({
-        file_name: "contact.js",
-        function_name: "onRead()",
+        file_name: "user.js",
+        function_name: "fetchList()",
         error: err
       });
     },

@@ -1,0 +1,17 @@
+<h1> 記事一覧</h1>
+<div id="article-list" v-cloak>
+  <!-- [ 一覧参照 ] -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="panel-title">({{count}}件)</span>
+    </div>
+
+    <div class="panel-body">
+      <list v-if="mounted"
+            :info="info">
+      </list>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'article' %>
