@@ -16,7 +16,7 @@
           <el-input id='user_name' v-model="query.user_name_cont" placeholder="投稿者" />
         </el-col>
         <el-col :span="4">
-          <el-input id='blog_title' v-model="query.title_cont" placeholder="タイトル" />
+          <el-input id='title' v-model="query.title_cont" placeholder="タイトル" />
         </el-col>
         <el-col :span="4">
           <el-date-picker　id='created_at_gteq' value-format="yyyy-MM-dd" v-model="query.created_at_gteq" type="date" placeholder="作成日(以降)" style="width:100%"/>
@@ -27,7 +27,7 @@
       </el-row>
 
       <el-row style="padding-top:10px">
-        <el-button type="primary" native-type="submit">サーチ</el-button>
+        <el-button type="primary" native-type="submit" id='submit-btn'>サーチ</el-button>
         <el-button @click="onClear" type="default">クリア</el-button>
       </el-row>
     </el-form>
