@@ -1,11 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+<% 50.times do |n| %>
+article_<%= n %>:
+  title: <%= "テストタイトル#{n}" %>
+  content: <%= "テスト内容#{n}" %>
+  user_id: <%= n+1 %>
+  created_at: <%= DateTime.parse('2020-03-15T12:00:00') + n %>
+<% end %>
