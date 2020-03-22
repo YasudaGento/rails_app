@@ -1,7 +1,7 @@
 class ArticleService < ApplicationService
   class << self
-    def get 
-      Article.excute_list_sql()
+    def get q
+      Article.excute_list_sql(q)
     end
   end
 end
