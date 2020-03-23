@@ -1,14 +1,15 @@
-<h1>ユーザー一覧</h1>
-<div id="user-list" v-cloak>
+<h1> 記事一覧</h1>
+<div id="article-list" v-cloak>
+
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="panel-title">検索</span>
     </div>
     <div class="panel-body">
       <!--機能: 検索 -->
-      <search :query = "query"
-               @on-search = "onSearch"
-               @on-clear = "onClear">
+      <search :query="query"
+               @on-search="onSearch"
+               @on-clear="onClear">
       </search>
     </div>
   </div>
@@ -18,13 +19,6 @@
     <div class="panel-heading">
       <span class="panel-title">({{count}}件)</span>
     </div>
-    <pagination-btn :limit='limit'
-                    :offset='offset'
-                    :count='count'
-                    @prev-click="prevClick"
-                    @next-click="nextClick"
-                    @current-change='currentChange'>
-    </pagination-btn>
 
     <div class="panel-body">
       <list v-if="mounted"
@@ -34,5 +28,5 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'user' %>
-<%= stylesheet_pack_tag 'user' %>
+<%= javascript_pack_tag 'article' %>
+<%= stylesheet_pack_tag 'article' %>

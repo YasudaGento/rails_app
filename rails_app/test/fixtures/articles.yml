@@ -1,0 +1,7 @@
+<% 50.times do |n| %>
+article_<%= n %>:
+  title: <%= "テストタイトル#{n}" %>
+  content: <%= "テスト内容#{n}" %>
+  user_id: <%= n+1 %>
+  created_at: <%= DateTime.parse('2020-03-15T12:00:00') + n %>
+<% end %>

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get list" do
-    get users_get_path, params: { offset:0 , limit: 0, q: {} }
+    get users_get_path, params: { offset: 0 , limit: 50, q: {} }
     res = JSON.parse(@response.body)
     
     # ユーザー50件の取得
@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get only a searched record" do
     # テスト太郎48で検索
     params = {name_cont: 'テスト太郎48'}
-    get users_get_path, params: { offset:0 , limit: 0, q: params }
+    get users_get_path, params: { offset: 0 , limit: 50, q: params }
     res = JSON.parse(@response.body)
     
     # ユーザー1件の取得
@@ -30,7 +30,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get right status when seraching reslut is zero" do
     # 存在しない名前で検索
     params = {name_cont: 'テスト太郎100'}
-    get users_get_path, params: { offset:0 , limit: 0, q: params }
+    get users_get_path, params: { offset:0 , limit: 50, q: params }
     res = JSON.parse(@response.body)
     
     # ユーザー0件の取得

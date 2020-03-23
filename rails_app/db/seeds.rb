@@ -8,3 +8,4 @@
 
 # demo_list data
 require "./db/seeds/user.rb"
+require "./db/seeds/article.rb"

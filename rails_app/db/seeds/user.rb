@@ -1,7 +1,7 @@
 Faker::Config.locale = :ja
 
 puts "ユーザーのseed投入"
-10.times do 
+100.times do 
   User.create!(
     name: Faker::Name.name,
     mail: Faker::Internet.email,
