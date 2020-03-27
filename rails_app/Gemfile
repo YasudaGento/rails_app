@@ -75,3 +75,5 @@ gem 'webpacker', '~> 3.5'
 gem 'slack-notifier'
 
 gem 'redis-rails'
+
+gem 'devise'
