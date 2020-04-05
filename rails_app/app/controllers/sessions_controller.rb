@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
       # セッションの保存
       create_session(user)
       redirect_to :articles
-    rescue AccountMailInvalidError => e
+    rescue AccountMailInvalidError
       redirect_to :sessions, alert: "メールアドレスが正しくありません。"
       return
-    rescue AccountPasswordInvalidError => e
+    rescue AccountPasswordInvalidError
       redirect_to :sessions, alert: "パスワードが正しくありません。"
       return
-    rescue => e
+    rescue
       redirect_to :sessions, alert: "原因不明のエラーです。"
       return
     end
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       # セッションの削除
       logout()
       redirect_to :sessions
-    rescue => e
+    rescue
       redirect_to :sessions, alert: "原因不明のエラーです。"
       return
     end
