@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index]
   namespace :sessions do
-    post :signin  
+    post :signin
+    delete :signout    
   end
 end

@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   def index; end
 
-  #サインイン
   def signin
     begin
       permited_params = permit_params(params)
@@ -18,6 +17,18 @@ class SessionsController < ApplicationController
     rescue AccountPasswordInvalidError => e
       redirect_to :sessions, alert: "パスワードが正しくありません。"
       return
+    rescue => e
+      redirect_to :sessions, alert: "原因不明のエラーです。"
+      return
+    end
+  end
+
+  def signout
+    begin
+      SessionService.signout(get_login_user())
+      # セッションの削除
+      logout()
+      redirect_to :sessions
     rescue => e
       redirect_to :sessions, alert: "原因不明のエラーです。"
       return

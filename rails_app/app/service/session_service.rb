@@ -13,6 +13,11 @@ class SessionService < ApplicationService
         raise AccountPasswordInvalidError.new
       end
     end
+
+    def signout params
+      user = User.find_for_database_authentication(authentication_token: params[:authentication_token])
+      user.update_attributes(authentication_token: nil)
+    end
   end
 end
 
