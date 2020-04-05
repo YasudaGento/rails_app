@@ -1,5 +1,32 @@
-<div id="sign-in" v-cloak>
-  <sign-in></sign-in>
+<div class="panel panel-info">
+  <% if flash[:error] %>
+    <div class="flash">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+  <div class="panel-body">
+      <%= form_tag(sessions_signin_path) do %>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <%= label_tag :email, 'メールアドレス'%><br />
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 form-inline" style="padding: 2px;">
+              <%= email_field_tag :email%>
+            </div>
+          </div>
+          <div class="row">
+            <div  class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <%= label_tag :password, 'パスワード'%><br />
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 form-inline" style="padding: 2px;">
+              <%= password_field_tag :password%>
+            </div>
+          </div>
+          <div class="actions">
+            <%= submit_tag "ログイン", id: 'submit', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>
-
-<%= javascript_pack_tag 'session' %>

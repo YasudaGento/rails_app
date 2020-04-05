@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
-  def index
+  include SessionsHelper
+  before_action :set_request_filter
+  before_action :is_logined?
+
+  def is_logined?
+    if false == logined?
+      redirect_to sessions_path, alert: "ログインしてからアクセスしてください"
+    end
   end
 
-  def get
+  def set_request_filter
+    Thread.current[:request] = request
   end
 
 end
