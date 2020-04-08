@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="DemoListTest" filepath="/rails_app/test/system/demo_list_test.rb" skipped="0" failures="1" errors="0" tests="1" assertions="1" time="11.756073699998524">
-    <testcase name="test_demo_test" lineno="5" classname="DemoListTest" assertions="1" time="11.756073699998524">
-    <failure type="Minitest::Assertion" message="Expected false to be truthy.">
-Failure:
-test_demo_test(Minitest::Result) [/rails_app/test/system/demo_list_test.rb:11]:
-Expected false to be truthy.
-    </failure>
+  <testsuite name="DemoListTest" filepath="/rails_app/test/system/demo_list_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="4.8442345000003115">
+    <testcase name="test_demo_test" lineno="5" classname="DemoListTest" assertions="1" time="4.8442345000003115">
     </testcase>
   </testsuite>
 </testsuites>
