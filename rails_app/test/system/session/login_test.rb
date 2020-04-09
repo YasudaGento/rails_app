@@ -13,7 +13,7 @@ class LoginTest < ApplicationSystemTestCase
     # ログインボタン押下
     page.find("#submit", wait: 10).click()
 
-    assert page.has_text?('記事一覧')
+    assert page.has_text?('ログインしました')
   end
 
   test "should not login with uncorrect email" do

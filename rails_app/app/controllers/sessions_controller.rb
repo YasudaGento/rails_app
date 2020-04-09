@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       user = SessionService.signin(permited_params)
       # セッションの保存
       create_session(user)
-      redirect_to :articles
+      redirect_to :articles, notice: "ログインしました。"
     rescue AccountMailInvalidError
       redirect_to :sessions, alert: "メールアドレスが正しくありません。"
       return
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       SessionService.signout(get_login_user())
       # セッションの削除
       logout()
-      redirect_to :sessions
+      redirect_to :sessions, notice: "ログアウトしました。"
     rescue
       redirect_to :sessions, alert: "原因不明のエラーです。"
       return
