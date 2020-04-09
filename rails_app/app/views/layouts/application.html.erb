@@ -38,9 +38,22 @@
               </ul>
             </li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if logined? %>
+              <li><%= link_to "#{get_login_user[:name]} さん", '#'%></li>
+              <li><%= link_to 'ログアウト', sessions_signout_path, method: :delete %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>
+    <% if notice %>
+      <p class="alert alert-success">
+      <%= notice %>
+      </p>
+    <% elsif alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

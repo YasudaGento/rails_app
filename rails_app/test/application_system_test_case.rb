@@ -22,6 +22,9 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   # 事前処理
   def setup
+    # ログインシュミレーション
+    ApplicationController.prepend TestLoginStatusHelper
+
     host! "http://nginx:19800"
   end
 

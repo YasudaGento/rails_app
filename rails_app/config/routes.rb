@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :application
-
   resources :demo_lists, only: [:index]
   namespace :demo_lists do
     get :get
@@ -21,5 +19,11 @@ Rails.application.routes.draw do
   # スラック通知
   namespace :slacks do
     post :notificate
+  end
+
+  resources :sessions, only: [:index]
+  namespace :sessions do
+    post :signin
+    delete :signout    
   end
 end
