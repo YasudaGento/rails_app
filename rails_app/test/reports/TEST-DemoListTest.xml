@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="DemoListTest" filepath="/rails_app/test/system/demo_list_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="4.8442345000003115">
-    <testcase name="test_demo_test" lineno="5" classname="DemoListTest" assertions="1" time="4.8442345000003115">
-    </testcase>
-  </testsuite>
-</testsuites>

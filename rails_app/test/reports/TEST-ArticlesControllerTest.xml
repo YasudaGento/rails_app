@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ArticlesControllerTest" filepath="/rails_app/test/controllers/articles_controller_test.rb" skipped="0" failures="0" errors="0" tests="8" assertions="24" time="0.48848083699976996">
+    <testcase name="test_should_search_date_range" lineno="91" classname="ArticlesControllerTest" assertions="2" time="0.19715109300000222">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_user_name" lineno="32" classname="ArticlesControllerTest" assertions="2" time="0.03923401899987766">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_less_than_created_date" lineno="75" classname="ArticlesControllerTest" assertions="3" time="0.04744489099994098">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_title" lineno="44" classname="ArticlesControllerTest" assertions="2" time="0.031708820999938325">
+    </testcase>
+    <testcase name="test_should_get_list" lineno="4" classname="ArticlesControllerTest" assertions="5" time="0.049593799999911425">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_all_serching_items" lineno="106" classname="ArticlesControllerTest" assertions="4" time="0.04595564400005969">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_more_than_created_date" lineno="57" classname="ArticlesControllerTest" assertions="4" time="0.03383353599997463">
+    </testcase>
+    <testcase name="test_should_get_right_status_when_seraching_reslut_is_zero" lineno="21" classname="ArticlesControllerTest" assertions="2" time="0.04355903300006503">
+    </testcase>
+  </testsuite>
+</testsuites>

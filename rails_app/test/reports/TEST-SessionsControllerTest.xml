@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="SessionsControllerTest" filepath="/rails_app/test/controllers/sessions_controller_test.rb" skipped="0" failures="0" errors="0" tests="3" assertions="4" time="1.314337101999854">
+    <testcase name="test_should_login_with_correct_user_mail_and_password" lineno="4" classname="SessionsControllerTest" assertions="2" time="1.2118099689998871">
+    </testcase>
+    <testcase name="test_should_not_login_with_uncorrect_user_email" lineno="22" classname="SessionsControllerTest" assertions="1" time="0.03563040499989256">
+    </testcase>
+    <testcase name="test_should_not_login_with_uncorrect_user_password" lineno="14" classname="SessionsControllerTest" assertions="1" time="0.06689672800007429">
+    </testcase>
+  </testsuite>
+</testsuites>
