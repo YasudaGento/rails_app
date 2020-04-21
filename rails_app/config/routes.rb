@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     get :get
   end
 
+  resources :article_details, only: [:index]
+  namespace :article_details do
+    get :get
+  end
+
   # スラック通知
   namespace :slacks do
     post :notificate
