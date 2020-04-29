@@ -11,7 +11,7 @@
         <el-aside width="300px" style="border: 1px solid #eee">
           <table>
             <!-- 記事編集モーダル -->
-            <article-edit-button :info="detail_info"></article-edit-button>
+            <article-edit-button :info="detail_info" @on-update-data="onUpdateData"></article-edit-button>
             <tr>
               <th>投稿者 : </th>
               <td> {{ detail_info["user_name"] }}</td>
@@ -55,5 +55,11 @@
 
   export default class DetailList extends Vue {
     @Prop() detail_info!: Object
+
+    onUpdateData(data: Object): void{
+      // 編集後の値の更新
+      this.detail_info["title"] = data["title"]
+      this.detail_info["content"] = data["content"]
+    }
   }
 </script>

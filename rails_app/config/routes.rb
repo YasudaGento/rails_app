@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index]
   namespace :articles do
     get :get
+    post :update
   end
 
   resources :article_details, only: [:index]

@@ -21,7 +21,8 @@ class Article < ApplicationRecord
       user_id = Article.find(article_id).user_id
 
       self.joins("LEFT OUTER JOIN #{User.sql_t} AS user_t ON user_t.id = #{self.sql_t}.user_id")
-          .select("#{self.sql_t}.title",
+          .select("#{self.sql_t}.id AS article_id",
+                  "#{self.sql_t}.title",
                   "#{self.sql_t}.created_at",
                   "#{self.sql_t}.updated_at",
                   "#{self.sql_t}.content",
@@ -32,4 +33,6 @@ class Article < ApplicationRecord
   end
 
   belongs_to :user
+  validates :title, presence: true
+  validates :content, presence: true
 end

@@ -54,6 +54,5 @@ new Vue({
         error: err
       });
     }
-      
   }
 })

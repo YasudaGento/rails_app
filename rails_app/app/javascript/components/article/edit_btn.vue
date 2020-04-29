@@ -2,6 +2,7 @@
   <div>
     <edit v-if="modal_status"
           :info="info"
+          @on-reload="onReload"
           @on-close="closeModal">
     </edit>
 
@@ -31,6 +32,11 @@
 
     closeModal(): void{
       this.modal_status = false
+    }
+
+    @Emit('on-update-data')
+    onReload(data: Object): Object{
+      return data
     }
   }
 </script>
