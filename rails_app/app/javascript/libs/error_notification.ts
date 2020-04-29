@@ -1,4 +1,4 @@
-import http from './http'
+import http from './http';
 import * as moment from 'moment';
 
 export default {

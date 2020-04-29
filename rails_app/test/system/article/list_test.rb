@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 # 記事一覧に関するシステムテスト
-class UserTest < ApplicationSystemTestCase
+class Article::ListTest < ApplicationSystemTestCase
   test "should get article page" do
     visit "/articles"
 

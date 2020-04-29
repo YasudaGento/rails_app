@@ -48,8 +48,8 @@
 </template>
 
 <script lang="ts">
-  import { Button, Input, Notification } from 'element-ui'
-  import { Component, Prop, Vue, Emit } from "vue-property-decorator"
+  import { Button, Input, Notification } from 'element-ui';
+  import { Component, Prop, Vue, Emit } from "vue-property-decorator";
   import error_notification from "../../libs/error_notification";
   import modal_back from "../../libs/modal_back";
   import http from "../../libs/http";

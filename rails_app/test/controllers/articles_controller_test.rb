@@ -120,4 +120,57 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     date_1 = DateTime.parse('2020-03-16T12:00:00').strftime().split("T")[0]
     assert_equal(date_1, res["info"][0]['created_at'].split("T")[0])
   end
+
+  # 記事が正しく編集できることのテスト
+  test "should update article" do
+    article = Article.find_by(title: "テストタイトル1")
+    # 更新前の値確認
+    assert_equal("テストタイトル1", article.title)
+    assert_equal("テスト内容1", article.content)
+
+    params = {
+      article: {
+        id: article.id,
+        title: "changed_title",
+        content: "changed_content"
+      }
+    }
+    post articles_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(200, @response.status)
+    # 値の確認
+    assert_equal(params[:article][:title], res["changed"]["title"])
+    assert_equal(params[:article][:content], res["changed"]["content"])
+  end
+
+  # 記事が正しくない編集できないことのテスト
+  # 期待値：　バリデーション文言の取得
+  test "should not update article whne params is uncorrect" do
+    article = Article.find_by(title: "テストタイトル1")
+    # 更新前の値確認
+    assert_equal("テストタイトル1", article.title)
+    assert_equal("テスト内容1", article.content)
+
+    # タイトルをnilで送る
+    params = {
+      article: {
+        id: article.id,
+        title: nil,
+        content: "changed_content"
+      }
+    }
+    post articles_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("タイトルを入力してください", res["message"][0])
+    # 値が更新されていないことを確認
+    article = Article.find(article.id)
+    assert_equal("テストタイトル1", article.title)
+    assert_equal("テスト内容1", article.content)
+  end
 end

@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 # ユーザーに関するシステムテスト
-class LoginTest < ApplicationSystemTestCase
+class SessionLoginTest < ApplicationSystemTestCase
   test "should login with correct password and email" do
     user = User.create!(name: "検証太郎", password: "123456789Test", email: "test_test@mail.com") 
     visit "/sessions"

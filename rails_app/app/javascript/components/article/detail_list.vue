@@ -38,8 +38,8 @@
 </template>
 
 <script lang="ts">
-  import { Header, Main, Container, Aside, Button } from 'element-ui'
-  import { Component, Prop, Vue, Emit } from "vue-property-decorator"
+  import { Header, Main, Container, Aside, Button } from 'element-ui';
+  import { Component, Prop, Vue, Emit } from "vue-property-decorator";
   import ArticleEditButton from '../../components/article/edit_btn.vue';
 
   @Component({
