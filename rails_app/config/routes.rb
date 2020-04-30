@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     get :get
   end
 
+  resources :user_details, only: [:index]
+  namespace :user_details do
+    get :get
+  end
+
   resources :articles, only: [:index]
   namespace :articles do
     get :get
