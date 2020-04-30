@@ -66,3 +66,14 @@
   color: #f0f0f0f0;
   background-color:#006666;
 }
+
+/* エラー内容 */
+.error h4 { color: red; }
+.error {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+     background-color: #ffc0cb;
+}
+.error ul { margin: 0; }

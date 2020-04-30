@@ -1,0 +1,15 @@
+<h1> 記事詳細</h1>
+<div id="article-detail" v-cloak>
+  
+  <div class="panel panel-default">
+    <div id="article_id" data="<%= @article_id%>"></div>
+    <div class="panel-body">
+      <list v-if="mounted"
+            :detail_info="detail_info">
+      </list>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'article_detail' %>
+<%= stylesheet_pack_tag 'article_detail' %>

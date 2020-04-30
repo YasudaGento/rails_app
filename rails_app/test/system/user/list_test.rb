@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 # ユーザーに関するシステムテスト
-class UserTest < ApplicationSystemTestCase
+class User::ListTest < ApplicationSystemTestCase
   test "should get user page" do
     visit "/users"
 
