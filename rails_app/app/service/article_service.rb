@@ -14,5 +14,15 @@ class ArticleService < ApplicationService
 
       article
     end
+
+    def create params
+      article = Article.new(params)
+      article.save!(params)
+    end
+
+    def get_article_count article_id
+      user_id = Article.find(article_id).user_id
+      Article.where("user_id = #{user_id}").count
+    end
   end
 end

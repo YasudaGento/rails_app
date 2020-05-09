@@ -5,7 +5,8 @@
     <div id="article_id" data="<%= @article_id%>"></div>
     <div class="panel-body">
       <list v-if="mounted"
-            :detail_info="detail_info">
+            :detail_info="detail_info"
+            :article_count="article_count">
       </list>
     </div>
   </div>

@@ -30,7 +30,7 @@
   export default class List extends Vue {
     @Prop() info!: Object[]
 
-    open_detail_page(article_id): void {
+    open_detail_page(article_id: number): void {
       window.open( '/article_details?article_id=' + article_id)
     }
   }

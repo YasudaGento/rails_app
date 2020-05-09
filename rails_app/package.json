@@ -49,8 +49,7 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "vue",
-      "ts"
+      "vue"
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/app/javascript/$1"

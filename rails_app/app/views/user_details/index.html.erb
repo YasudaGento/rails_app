@@ -1,0 +1,17 @@
+<h1> ユーザー詳細</h1>
+<div id="user-detail" v-cloak>
+  
+  <div class="panel panel-default">
+    <div id="user_id" data="<%= @user_id%>"></div>
+    <div class="panel-body">
+      <list v-if="mounted"
+            :detail_info="detail_info"
+            :count="count"
+            @on-reload="onReload">
+      </list>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'user_detail' %>
+<%= stylesheet_pack_tag 'user_detail' %>

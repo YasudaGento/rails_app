@@ -18,7 +18,7 @@
             </tr>
             <tr>
               <th>投稿数 : </th>
-              <td> {{ detail_info["article_count"] }}</td>
+              <td> {{ article_count }}</td>
             </tr>
             <tr>
               <th>投稿日 : </th>
@@ -55,6 +55,7 @@
 
   export default class DetailList extends Vue {
     @Prop() detail_info!: Object
+    @Prop() article_count!: Number
 
     onUpdateData(data: Object): void{
       // 編集後の値の更新

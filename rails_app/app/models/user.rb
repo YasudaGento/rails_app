@@ -11,11 +11,25 @@ class User < ApplicationRecord
     end
 
     def excute_list_sql q
-      self.select("#{self.sql_t}.name as user_name",
+      self.select("#{self.sql_t}.id as user_id",
+                  "#{self.sql_t}.name as user_name",
                   "#{self.sql_t}.created_at")
           .order(Arel.sql("#{self.sql_t}.created_at DESC"))
           .ransack(q)
           .result()
+    end
+
+    def excute_for_detail_sql user_id
+      self.joins("LEFT OUTER JOIN #{Article.sql_t} AS article_t ON article_t.user_id = #{self.sql_t}.id")
+          .select("#{self.sql_t}.id AS user_id",
+                  "#{self.sql_t}.name AS user_name",
+                  "#{self.sql_t}.created_at AS user_created_at",
+                  "article_t.id AS article_id",
+                  "article_t.title",
+                  "article_t.created_at AS article_created_at")
+          .where("#{User.sql_t}.id = #{user_id}")
+          .limit(10)
+          .order(Arel.sql("article_t.created_at DESC"))
     end
   end
 
