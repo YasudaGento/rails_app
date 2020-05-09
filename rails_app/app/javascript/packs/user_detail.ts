@@ -55,6 +55,10 @@ new Vue({
         function_name: "fetchDetail()",
         error: err
       });
-    }
+    },
+
+    onReload: function(): void{
+      this.fetchDetail(this.user_id)
+    },
   }
 })

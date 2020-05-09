@@ -28,6 +28,8 @@ class User < ApplicationRecord
                   "article_t.title",
                   "article_t.created_at AS article_created_at")
           .where("#{User.sql_t}.id = #{user_id}")
+          .limit(10)
+          .order(Arel.sql("article_t.created_at DESC"))
     end
   end
 

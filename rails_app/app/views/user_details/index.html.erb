@@ -6,7 +6,8 @@
     <div class="panel-body">
       <list v-if="mounted"
             :detail_info="detail_info"
-            :count="count">
+            :count="count"
+            @on-reload="onReload">
       </list>
     </div>
   </div>

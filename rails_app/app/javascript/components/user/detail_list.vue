@@ -16,7 +16,8 @@
           {{ detail_info[0]["user_name"] }}さん
         </div>
         <div class="inline-header-block">
-          button
+          <!-- 記事投稿モーダル -->
+          <article-create-button :user_id="detail_info[0].user_id" @on-reload="onReload"></article-create-button>
         </div>
       </el-header>
       <el-container>
@@ -38,7 +39,7 @@
         </el-aside>
         
         <el-table :data="detail_info" max-height="700" border style="width:100%">
-          <el-table-column prop="title" :min-width="80" label="タイトル" sortable>
+          <el-table-column prop="title" :min-width="80" label="タイトル(最新10県表示)" sortable>
             <template slot-scope="scope">
               <a @click="open_article_detail_page(scope.row.article_id)" class="all-item-link">
                 {{scope.row.title}}
@@ -55,6 +56,7 @@
 <script lang="ts">
   import { Header, Main, Container, Aside, Button, Table, TableColumn } from 'element-ui';
   import { Component, Prop, Vue, Emit } from "vue-property-decorator";
+  import ArticleCreateButton from '../../components/article/create_btn.vue';
 
   @Component({
     components: {
@@ -64,7 +66,8 @@
       "el-container": Container,
       "el-button": Button,
       "el-table": Table,
-      "el-table-column": TableColumn
+      "el-table-column": TableColumn,
+      "article-create-button": ArticleCreateButton
     },
   })
 
@@ -75,5 +78,8 @@
     open_article_detail_page(article_id: number): void {
       window.open( '/article_details?article_id=' + article_id)
     }
+
+    @Emit('on-reload')
+    onReload(): void{}
   }
 </script>
