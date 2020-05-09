@@ -7,5 +7,11 @@ class UserService < ApplicationService
     def get_detail user_id
       User.excute_for_detail_sql(user_id)
     end
+
+    def update params
+      user = User.find(params[:id])
+      user.update!(params)
+    end
+
   end
 end

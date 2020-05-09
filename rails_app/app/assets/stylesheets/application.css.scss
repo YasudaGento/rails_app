@@ -77,3 +77,25 @@
      background-color: #ffc0cb;
 }
 .error ul { margin: 0; }
+
+.required {
+  &:after {
+      content: '必須';
+      padding: 2px;
+      color: white;
+      background-color: #e61313;
+      margin-left: 5px;
+      font-size: x-small;
+  }
+}
+
+.not-required {
+  &:after {
+      content: '任意';
+      padding: 2px;
+      color: white;
+      background-color: #a0a0a0;
+      margin-left: 5px;
+      font-size: x-small;
+  }
+}

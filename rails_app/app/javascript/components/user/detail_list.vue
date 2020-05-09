@@ -35,6 +35,9 @@
                 <td> {{ this.count }} 件</td>
               </tr>
             </div>
+
+            <!-- ユーザー編集モーダル -->
+            <user-edit-button :info="detail_info[0]" @on-update-data="onReload"></user-edit-button>
           </table>
         </el-aside>
         
@@ -57,6 +60,7 @@
   import { Header, Main, Container, Aside, Button, Table, TableColumn } from 'element-ui';
   import { Component, Prop, Vue, Emit } from "vue-property-decorator";
   import ArticleCreateButton from '../../components/article/create_btn.vue';
+  import UserEditButton from '../../components/user/edit_btn.vue';
 
   @Component({
     components: {
@@ -67,7 +71,8 @@
       "el-button": Button,
       "el-table": Table,
       "el-table-column": TableColumn,
-      "article-create-button": ArticleCreateButton
+      "article-create-button": ArticleCreateButton,
+      "user-edit-button": UserEditButton
     },
   })
 

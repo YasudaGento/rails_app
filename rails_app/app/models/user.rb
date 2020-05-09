@@ -24,6 +24,7 @@ class User < ApplicationRecord
           .select("#{self.sql_t}.id AS user_id",
                   "#{self.sql_t}.name AS user_name",
                   "#{self.sql_t}.created_at AS user_created_at",
+                  "#{self.sql_t}.email",
                   "article_t.id AS article_id",
                   "article_t.title",
                   "article_t.created_at AS article_created_at")
