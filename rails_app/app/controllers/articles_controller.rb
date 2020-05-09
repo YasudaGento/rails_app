@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
   def create
     begin
-      result = ArticleService.create(permit_params(params[:article]))
+      ArticleService.create(permit_params(params[:article]))
       render json: { }, status: 200
     rescue ActiveRecord::RecordInvalid => e
       render json: { message: ErrorMessageHelper.get_err_msg(e) }, status: 422

@@ -173,4 +173,56 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal("テストタイトル1", article.title)
     assert_equal("テスト内容1", article.content)
   end
+
+  # 記事が正しく作成できることのテスト
+  test "should create article" do
+    user_id = User.first.id
+    # user_idの記事を削除
+    Article.where(user_id: user_id).delete_all
+
+    #　記事数の確認
+    assert_equal(0, Article.where(user_id: user_id).length)
+    
+    params = {
+      article: {
+        user_id: user_id,
+        title: "new_title",
+        content: "new_content"
+      }
+    }
+    post articles_create_path, params: params, as: :json
+    
+    # ステータスの確認
+    assert_equal(200, @response.status)
+    # 値の確認
+    assert_equal(1, Article.where(user_id: user_id).length)
+    aritcle = Article.find_by(user_id: user_id)
+    assert_equal(params[:article][:title], aritcle.title)
+    assert_equal(params[:article][:content], aritcle.content)
+  end
+
+  # 記事が正しく作成できることのテスト
+  test "should not create article" do
+    user_id = User.first.id
+    # user_idの記事を削除
+    Article.where(user_id: user_id).delete_all
+
+    #　記事数の確認
+    assert_equal(0, Article.where(user_id: user_id).length)
+    
+    params = {
+      article: {
+        user_id: user_id,
+        title: nil,
+        content: "new_content"
+      }
+    }
+    post articles_create_path, params: params, as: :json
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal(0, Article.where(user_id: user_id).length)
+    assert_equal("タイトルを入力してください", res["message"][0])
+  end
 end
