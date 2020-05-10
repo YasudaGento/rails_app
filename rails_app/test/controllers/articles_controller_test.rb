@@ -218,6 +218,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       }
     }
     post articles_create_path, params: params, as: :json
+    res = JSON.parse(@response.body)
     
     # ステータスの確認
     assert_equal(422, @response.status)

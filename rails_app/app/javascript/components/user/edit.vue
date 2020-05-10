@@ -38,6 +38,13 @@
             </div>
           </div>
 
+          <div class="modal-body">
+            <div class="field">
+              <label class="required">パスワード確認用</label>
+              <el-input placeholder="確認のため再度入力してください" id="confirm_password" v-model="confirm_password"></el-input>
+            </div>
+          </div>
+
           <div class="modal-footer">
              <div v-if="errors && errors.length !== 0" class="error">
               <h4>エラー内容を確認の上、再入力してください。</h4>
@@ -79,6 +86,7 @@
       email: null,
       password: "",
     }
+    private confirm_password: String = ""
 
     created(): void{
       this.set_init_data(this.info)
@@ -92,6 +100,12 @@
     }
 
     onSubmit(): void {
+      if(this.invalid_password()){ 
+        this.errors = []
+        this.errors.push("パスワードが一致していません")
+        return
+      }
+
       const params = {
         user: {
           id: this.info["user_id"],
@@ -138,6 +152,11 @@
           error: err
         });
       }
+    }
+
+    invalid_password(): boolean{
+      if(this.form["password"] === ""){ return false}
+      return this.form["password"] !== this.confirm_password
     }
 
     @Emit('on-close')

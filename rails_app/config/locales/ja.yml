@@ -4,3 +4,7 @@ ja:
       article:
         title: タイトル
         content: 内容
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
