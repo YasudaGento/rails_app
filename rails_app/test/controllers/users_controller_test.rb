@@ -37,4 +37,120 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal(200, (@response.status))
     assert_equal(0, (res["info"].length))
   end
+
+  # ユーザー情報が正しく編集できることのテスト
+  test "should update user info" do
+    user = User.first
+    # 更新前の値確認
+    assert_equal("テスト太郎0", user.name)
+    assert_equal("user0@example.com", user.email)
+
+    params = {
+      user: {
+        id: user.id,
+        name: "test太郎",
+        email: "changed_test@mail.com",
+        password: "123456789Az"
+      }
+    }
+    post users_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(200, @response.status)
+    # 値の確認
+    assert_equal(params[:user][:name], User.first.name)
+    assert_equal(params[:user][:email], User.first.email)
+  end
+
+  # ユーザー情報が正しくない時に編集ができない
+  test "should not update user info" do
+    user = User.first
+    # 更新前の値確認
+    assert_equal("テスト太郎0", user.name)
+    assert_equal("user0@example.com", user.email)
+
+    # 名前をnilで編集
+    params = {
+      user: {
+        id: user.id,
+        name: nil,
+        email: "changed_test@mail.com",
+        password: "123456789Az"
+      }
+    }
+    post users_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("ユーザー名を入力してください", res["message"][0])
+  end
+
+  # パスワードが6文字以下の際のテスト
+  test "should validate when update password less than 6 letters" do
+    user = User.first
+
+    # パスワードが4文字
+    params = {
+      user: {
+        id: user.id,
+        name: "test太郎",
+        email: "changed_test@mail.com",
+        password: "12Ab"
+      }
+    }
+    post users_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("パスワードは6文字以上で入力してください", res["message"][0])
+  end
+
+  # パスワードに数字しか含まれていない時のテスト
+  test "should validate when update password dosent include number and string" do
+    user = User.first
+
+    # パスワードが数字のみ
+    params = {
+      user: {
+        id: user.id,
+        name: "test太郎",
+        email: "changed_test@mail.com",
+        password: "12345677"
+      }
+    }
+    post users_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("パスワードは、半角大文字小文字英数字を含めた文字で入力してください", res["message"][0])
+  end
+
+  # パスワードがemptyの時のテスト
+  test "should validate when update password is empty" do
+    user = User.first
+
+    # パスワードが空文字
+    params = {
+      user: {
+        id: user.id,
+        name: "test太郎",
+        email: "changed_test@mail.com",
+        password: ""
+      }
+    }
+    post users_update_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+    
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("パスワードを入力してください", res["message"][0])
+  end
 end

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="Article::CreateTest" filepath="/rails_app/test/system/article/create_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="8" time="6.569691499999863">
-    <testcase name="test_should_create_article" lineno="5" classname="Article::CreateTest" assertions="4" time="3.3893692999999985">
-    </testcase>
-    <testcase name="test_should_validate_to_create_article" lineno="28" classname="Article::CreateTest" assertions="4" time="3.180322199999864">
-    </testcase>
-  </testsuite>
-</testsuites>
