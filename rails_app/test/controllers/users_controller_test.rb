@@ -54,7 +54,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       }
     }
     post users_update_path, params: params, as: :json
-    res = JSON.parse(@response.body)
     
     # ステータスの確認
     assert_equal(200, @response.status)

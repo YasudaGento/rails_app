@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="DemoListsControllerTest" filepath="/rails_app/test/controllers/demo_lists_controller_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="0.9314827999987756">
+    <testcase name="test_get_list" lineno="4" classname="DemoListsControllerTest" assertions="1" time="0.9314827999987756">
+    </testcase>
+  </testsuite>
+</testsuites>
