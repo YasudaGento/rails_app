@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ArticlesControllerTest" filepath="/rails_app/test/controllers/articles_controller_test.rb" skipped="0" failures="0" errors="0" tests="12" assertions="44" time="0.3988764000005176">
+    <testcase name="test_should_not_create_article" lineno="205" classname="ArticlesControllerTest" assertions="4" time="0.15118310000070778">
+    </testcase>
+    <testcase name="test_should_create_article" lineno="178" classname="ArticlesControllerTest" assertions="5" time="0.04453469999862136">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_title" lineno="44" classname="ArticlesControllerTest" assertions="2" time="0.02673069999946165">
+    </testcase>
+    <testcase name="test_should_get_right_status_when_seraching_reslut_is_zero" lineno="21" classname="ArticlesControllerTest" assertions="2" time="0.015751700000691926">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_less_than_created_date" lineno="75" classname="ArticlesControllerTest" assertions="3" time="0.023726800000076764">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_more_than_created_date" lineno="57" classname="ArticlesControllerTest" assertions="4" time="0.013429800001176773">
+    </testcase>
+    <testcase name="test_should_not_update_article_whne_params_is_uncorrect" lineno="150" classname="ArticlesControllerTest" assertions="6" time="0.02031390000047395">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_seraching_user_name" lineno="32" classname="ArticlesControllerTest" assertions="2" time="0.015021799999885843">
+    </testcase>
+    <testcase name="test_should_get_list" lineno="4" classname="ArticlesControllerTest" assertions="5" time="0.025350299998535775">
+    </testcase>
+    <testcase name="test_should_get_a_record_by_all_serching_items" lineno="106" classname="ArticlesControllerTest" assertions="4" time="0.022066700001232675">
+    </testcase>
+    <testcase name="test_should_search_date_range" lineno="91" classname="ArticlesControllerTest" assertions="2" time="0.016600900000412366">
+    </testcase>
+    <testcase name="test_should_update_article" lineno="125" classname="ArticlesControllerTest" assertions="5" time="0.02416599999924074">
+    </testcase>
+  </testsuite>
+</testsuites>

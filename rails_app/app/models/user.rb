@@ -24,6 +24,7 @@ class User < ApplicationRecord
           .select("#{self.sql_t}.id AS user_id",
                   "#{self.sql_t}.name AS user_name",
                   "#{self.sql_t}.created_at AS user_created_at",
+                  "#{self.sql_t}.email",
                   "article_t.id AS article_id",
                   "article_t.title",
                   "article_t.created_at AS article_created_at")
@@ -34,4 +35,21 @@ class User < ApplicationRecord
   end
 
   has_many :articles
+
+  validates :name, presence: true, length: {maximum: 20}, null: false
+  validates :email, uniqueness: true, presence: true, null: false
+  validate :password_validate, unless: :skip_password_validation
+  PASSWORD_FORMAT = /\A
+    (?=.*\d)      # 数字
+    (?=.*[a-z])   # 英小文字
+    (?=.*[A-Z])   # 英大文字
+  /x
+
+  def password_validate
+    self.errors[:password] << "を入力してください" if password.blank?
+    self.errors[:password] << "は、半角大文字小文字英数字を含めた文字で入力してください" if !password.match(PASSWORD_FORMAT)
+    password.match(PASSWORD_FORMAT) && !password.blank?
+  end
+
+  attr_accessor :skip_password_validation
 end

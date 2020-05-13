@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   namespace :users do
     get :get
+    post :update
   end
 
   resources :user_details, only: [:index]

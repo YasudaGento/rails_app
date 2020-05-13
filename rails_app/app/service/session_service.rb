@@ -6,6 +6,7 @@ class SessionService < ApplicationService
       if user.valid_password?(params[:password])
         if user.authentication_token.nil?
           # token生成
+          user.skip_password_validation = true
           user.update_attributes(authentication_token: SecureRandom.hex(20))
         end
         user
@@ -16,6 +17,7 @@ class SessionService < ApplicationService
 
     def signout params
       user = User.find_for_database_authentication(authentication_token: params[:authentication_token])
+      user.skip_password_validation = true
       user.update_attributes(authentication_token: nil)
     end
   end

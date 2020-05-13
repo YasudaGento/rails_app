@@ -17,54 +17,54 @@
  @import "bootstrap";
 
  body {
-  padding-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .loader-wrapper{
-  right: auto !important;
-  bottom: auto !important;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+    right: auto !important;
+    bottom: auto !important;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
 }
 
 .bootstrap-date {
-  display: inline-block;
-  width: auto;
+    display: inline-block;
+    width: auto;
 }
 
 .field{
-  overflow: hidden;
-  margin-bottom: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
 }
 
 /* navbar 全体の背景色とボーダーカラー */
 .navbar-default {
-  background-color: #409e5d;
+    background-color: #409e5d;
 }
 
 /* navbar テキストカラー */
 .navbar-default .navbar-nav > li > a {
-  color: #ffffffff;
+    color: #ffffffff;
 }
 
 /* navbar hover,focus時のテキストカラー */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #ffffffff;
-  background-color: transparent;
+    color: #ffffffff;
+    background-color: transparent;
 }
 
 /* navbar ドロップダウン(親)のカラー */
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
-  color: #f0f0f0f0;
-  background-color:#006666;
+    color: #f0f0f0f0;
+    background-color:#006666;
 }
 
 /* エラー内容 */
@@ -77,3 +77,25 @@
      background-color: #ffc0cb;
 }
 .error ul { margin: 0; }
+
+.required {
+    &:after {
+        content: '必須';
+        padding: 2px;
+        color: white;
+        background-color: #e61313;
+        margin-left: 5px;
+        font-size: x-small;
+    }
+}
+
+.not-required {
+    &:after {
+        content: '任意';
+        padding: 2px;
+        color: white;
+        background-color: #a0a0a0;
+        margin-left: 5px;
+        font-size: x-small;
+    }
+}
