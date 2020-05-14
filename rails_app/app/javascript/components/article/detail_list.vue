@@ -11,7 +11,9 @@
         <el-aside width="300px" style="border: 1px solid #eee">
           <table>
             <!-- 記事編集モーダル -->
-            <article-edit-button :info="detail_info" @on-update-data="onUpdateData"></article-edit-button>
+            <div v-if="this.login_user_id === this.detail_info['user_id']">
+              <article-edit-button :info="detail_info" @on-update-data="onUpdateData"></article-edit-button>
+            </div>
             <tr>
               <th>投稿者 : </th>
               <td> {{ detail_info["user_name"] }}</td>
@@ -56,6 +58,7 @@
   export default class DetailList extends Vue {
     @Prop() detail_info!: Object
     @Prop() article_count!: Number
+    @Prop() login_user_id!: Number
 
     onUpdateData(data: Object): void{
       // 編集後の値の更新

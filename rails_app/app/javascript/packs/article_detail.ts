@@ -21,6 +21,7 @@ new Vue({
     article_id: <Number>0,
     detail_info: <Object>{},
     article_count: <Number>0,
+    login_user_id: <Number>0,
     mounted: <Boolean>false,
   },
 
@@ -46,6 +47,8 @@ new Vue({
     successFetch: function(res: Parameter): void{
       this.detail_info = res.data.info;
       this.article_count = res.data.article_count
+      this.login_user_id = res.data.login_user_id
+      console.log(this.login_user_id)
       this.mounted = true
     },
 
