@@ -17,7 +17,9 @@
         </div>
         <div class="inline-header-block">
           <!-- 記事投稿モーダル -->
-          <article-create-button :user_id="detail_info[0].user_id" @on-reload="onReload"></article-create-button>
+          <div v-if="this.login_user_id === this.detail_info[0]['user_id']">
+            <article-create-button :user_id="detail_info[0].user_id" @on-reload="onReload"></article-create-button>
+          </div>
         </div>
       </el-header>
       <el-container>
@@ -37,7 +39,9 @@
             </div>
 
             <!-- ユーザー編集モーダル -->
-            <user-edit-button :info="detail_info[0]" @on-update-data="onReload"></user-edit-button>
+            <div v-if="this.login_user_id === this.detail_info[0]['user_id']">
+              <user-edit-button :info="detail_info[0]" @on-update-data="onReload"></user-edit-button>
+            </div>
           </table>
         </el-aside>
         
@@ -78,6 +82,7 @@
 
   export default class DetailList extends Vue {
     @Prop() detail_info!: Object[]
+    @Prop() login_user_id!: Number
     @Prop() count!: Number
 
     open_article_detail_page(article_id: number): void {

@@ -5,7 +5,9 @@ class UserDetailsController < ApplicationController
 
   def get
     result = UserService.get_detail(params[:user_id])
+    # ログインユーザーIDの取得
+    login_user_id = get_login_user[:id]
     
-    render json: {info: result, count: result.length}, status: 200
+    render json: {info: result, login_user_id: login_user_id, count: result.length}, status: 200
   end
 end

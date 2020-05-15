@@ -3,7 +3,11 @@ require "application_system_test_case"
 # ユーザー編集に関するシステムテスト
 class User::EditTest < ApplicationSystemTestCase
   test "should edit user" do
-    visit "/user_details?user_id=#{User.first.id}"
+    user = User.first
+    TestSessionsHelper.set_login_user({id: user.id, name: user.name })
+    ApplicationController.prepend TestSessionsHelper
+
+    visit "/user_details?user_id=#{user.id}"
 
     # 編集ボタンを押下
     page.first("#edit-btn", wait: 10).click()
@@ -28,7 +32,11 @@ class User::EditTest < ApplicationSystemTestCase
   end
 
   test "should validate to update user" do
-    visit "/user_details?user_id=#{User.first.id}"
+    user = User.first
+    TestSessionsHelper.set_login_user({id: user.id, name: user.name })
+    ApplicationController.prepend TestSessionsHelper
+
+    visit "/user_details?user_id=#{user.id}"
     user = User.first
 
     # 編集ボタンを押下

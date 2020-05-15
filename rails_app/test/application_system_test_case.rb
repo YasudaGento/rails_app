@@ -2,6 +2,7 @@ require 'test_helper'
 require 'capybara'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  module TestLoginStatusHelper def is_logined?() true end end
 
   # Capybaraの設定
   Capybara.configure do |config|

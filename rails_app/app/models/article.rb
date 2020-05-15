@@ -24,7 +24,8 @@ class Article < ApplicationRecord
                   "#{self.sql_t}.created_at",
                   "#{self.sql_t}.updated_at",
                   "#{self.sql_t}.content",
-                  "user_t.name AS user_name")
+                  "user_t.name AS user_name",
+                  "user_t.id AS user_id")
           .find(article_id)
     end
   end
