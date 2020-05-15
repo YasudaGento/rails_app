@@ -3,6 +3,9 @@ require "application_system_test_case"
 # 記事編集に関するシステムテスト
 class Article::EditTest < ApplicationSystemTestCase
   test "should edit article" do
+    user = User.find(Article.first.user_id)
+    TestSessionsHelper.set_login_user({id: user.id, name: user.name })
+    ApplicationController.prepend TestSessionsHelper
     visit "/article_details?article_id=#{Article.first.id}"
 
     # 編集ボタンを押下
@@ -25,6 +28,9 @@ class Article::EditTest < ApplicationSystemTestCase
   end
 
   test "should validate to update article" do
+    user = User.find( Article.first.user_id)
+    TestSessionsHelper.set_login_user({id: user.id, name: user.name })
+    ApplicationController.prepend TestSessionsHelper
     visit "/article_details?article_id=#{Article.first.id}"
     article = Article.first
 
