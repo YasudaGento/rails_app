@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :users do
     get :get
     post :update
+    post :create
   end
 
   resources :user_details, only: [:index]

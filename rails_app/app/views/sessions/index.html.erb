@@ -26,7 +26,14 @@
           <div class="actions">
             <%= submit_tag "ログイン", id: 'submit', class: 'btn btn-primary' %>
           </div>
+          
+          <div id="session" v-cloak>
+            <!-- ユーザー登録モーダル -->
+            <user-create-button/>
+          </div>
         </div>
       <% end %>
   </div>
 </div>
+
+<%= javascript_pack_tag 'session' %>
