@@ -28,7 +28,7 @@
             <div class="aside-item">
               <tr>
                 <th>登録日 : </th>
-                <td> {{ detail_info[0]["user_created_at"] }}</td>
+                <td> {{ this.format_datatime(detail_info[0]["user_created_at"]) }}</td>
               </tr>
             </div>
             <div class="aside-item">
@@ -53,7 +53,7 @@
               </a>
             </template>
           </el-table-column>
-          <el-table-column prop="article_created_at" :min-width="25" label="投稿日" sortable/>
+          <el-table-column prop="article_created_at" :min-width="25" label="投稿日" :formatter="table_format_datatime" sortable/>
         </el-table>
       </el-container>
     </el-container>
@@ -65,6 +65,8 @@
   import { Component, Prop, Vue, Emit } from "vue-property-decorator";
   import ArticleCreateButton from '../../components/article/create_btn.vue';
   import UserEditButton from '../../components/user/edit_btn.vue';
+  import formatter from "../../libs/formatter";
+  import table_formatter from "../../libs/table_formatter";
 
   @Component({
     components: {
@@ -84,6 +86,9 @@
     @Prop() detail_info!: Object[]
     @Prop() login_user_id!: Number
     @Prop() count!: Number
+
+    private format_datatime:(d:string) => string = formatter.datetime
+    private table_format_datatime:(r: any, c:any, d:any) => string = table_formatter.datetime
 
     open_article_detail_page(article_id: number): void {
       window.open( '/article_details?article_id=' + article_id)

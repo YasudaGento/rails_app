@@ -24,11 +24,11 @@
             </tr>
             <tr>
               <th>投稿日 : </th>
-              <td> {{ detail_info["created_at"] }}</td>
+              <td> {{ this.format_datatime(detail_info["created_at"]) }}</td>
             </tr>
             <tr>
               <th>変更日 : </th>
-              <td> {{ detail_info["updated_at"] }}</td>
+              <td> {{ this.format_datatime(detail_info["updated_at"]) }}</td>
             </tr>
           </table>
         </el-aside>
@@ -43,6 +43,7 @@
   import { Header, Main, Container, Aside, Button } from 'element-ui';
   import { Component, Prop, Vue, Emit } from "vue-property-decorator";
   import ArticleEditButton from '../../components/article/edit_btn.vue';
+  import formatter from "../../libs/formatter";
 
   @Component({
     components: {
@@ -59,6 +60,8 @@
     @Prop() detail_info!: Object
     @Prop() article_count!: Number
     @Prop() login_user_id!: Number
+
+    private format_datatime:(d:string) => string = formatter.datetime
 
     onUpdateData(data: Object): void{
       // 編集後の値の更新

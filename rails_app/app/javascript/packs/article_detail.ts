@@ -48,7 +48,6 @@ new Vue({
       this.detail_info = res.data.info;
       this.article_count = res.data.article_count
       this.login_user_id = res.data.login_user_id
-      console.log(this.login_user_id)
       this.mounted = true
     },
 
