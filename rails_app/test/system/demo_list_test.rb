@@ -8,6 +8,6 @@ class DemoListTest < ApplicationSystemTestCase
 
     visit "/demo_lists"
 
-    assert page.has_text?('yasuda')
+    assert(page.has_text?('yasuda'))
   end
 end

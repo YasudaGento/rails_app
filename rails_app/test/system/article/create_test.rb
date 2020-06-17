@@ -18,13 +18,13 @@ class Article::CreateTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # 編集成功メッセージの確認
-    assert page.has_text?('投稿完了')
+    assert(page.has_text?('投稿完了'))
     # 表示の確認
-    assert page.has_text?('新しい記事タイトル')
+    assert(page.has_text?('新しい記事タイトル'))
 
     # 値の確認
-    assert "新しい記事タイトル", Article.find_by(user_id: user.id).title
-    assert "新しい記事内容", Article.find_by(user_id: user.id).content
+    assert_equal("新しい記事タイトル", Article.find_by(user_id: user.id).title)
+    assert_equal("新しい記事内容", Article.find_by(user_id: user.id).content)
   end
 
   test "should validate to create article" do
@@ -34,7 +34,7 @@ class Article::CreateTest < ApplicationSystemTestCase
     Article.where(user_id: user.id).delete_all
 
     # 値の確認
-    assert 0 , Article.where(user_id: user.id).length
+    assert_equal(0 , Article.where(user_id: user.id).length)
 
     visit "/user_details?user_id=#{user.id}"
 
@@ -44,10 +44,10 @@ class Article::CreateTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # エラーメッセージの確認
-    assert page.has_text?('タイトルを入力してください')
-    assert page.has_text?('内容を入力してください')
+    assert(page.has_text?('タイトルを入力してください'))
+    assert(page.has_text?('内容を入力してください'))
 
     # 値が変更されていないことを確認
-    assert 0 , Article.where(user_id: user.id).length
+    assert_equal(0 , Article.where(user_id: user.id).length)
   end
 end

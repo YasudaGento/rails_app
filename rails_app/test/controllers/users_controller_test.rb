@@ -152,4 +152,50 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     # 値の確認
     assert_equal("パスワードを入力してください", res["message"][0])
   end
+
+  # ユーザー情報が正しく登録できることのテスト
+  test "should create user" do
+    # 更新前の値確認(ユーザーが50件登録されている)
+    assert_equal(50, User.count)
+
+    params = {
+      user: {
+        name: "test太郎",
+        email: "new_user@mail.com",
+        password: "123456789Az"
+      }
+    }
+    post users_create_path, params: params, as: :json
+    
+    # ステータスの確認
+    assert_equal(200, @response.status)
+    # 値の確認
+    assert_equal(params[:user][:name], User.last.name)
+    assert_equal(params[:user][:email], User.last.email)
+    # 一件増えて51件になっている
+    assert_equal(51, User.count)
+  end
+
+  # すでに登録されているユーザーのメールアドレスの場合登録できないこと
+  test "should not create user when user's mail address is already added" do
+    # 更新前の値確認(ユーザーが50件登録されている)
+    assert_equal(50, User.count)
+
+    params = {
+      user: {
+        name: "test太郎",
+        email: User.first.email, #すでにあるメールアドレスで登録
+        password: "123456789Az"
+      }
+    }
+    post users_create_path, params: params, as: :json
+    res = JSON.parse(@response.body)
+
+    # ステータスの確認
+    assert_equal(422, @response.status)
+    # 値の確認
+    assert_equal("メールアドレスはすでに存在します", res["message"][0])
+    # 件数は元のまま
+    assert_equal(50, User.count)
+  end
 end

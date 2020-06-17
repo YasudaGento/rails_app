@@ -27,14 +27,14 @@
           <div class="modal-body">
             <div class="field">
               <label class="required">メールアドレス</label>
-              <el-input placeholder="メールアドレスを入力してください" id="email" v-model="form['email']"></el-input>
+              <el-input placeholder="メールアドレスを入力してください" id="create-email" v-model="form['email']"></el-input>
             </div>
           </div>
 
           <div class="modal-body">
             <div class="field">
               <label class="required">パスワード</label>
-              <el-input placeholder="変更時のみパスワードを入力してください" id="password" v-model="form['password']"></el-input>
+              <el-input placeholder="変更時のみパスワードを入力してください" id="create-password" v-model="form['password']"></el-input>
             </div>
           </div>
 
