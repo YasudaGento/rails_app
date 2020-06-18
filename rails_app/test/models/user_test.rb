@@ -9,14 +9,14 @@ class UserTest < ActiveSupport::TestCase
   test 'should validate when name is nil' do
     @user.skip_password_validation = true
     @user[:name] = nil
-    assert !@user.valid?
+    assert(!@user.valid?)
   end
 
   # 概要: メールが記入されていない時のバリデーションテスト
   test 'should validate when email is nil' do
     @user.skip_password_validation = true
     @user[:email] = nil
-    assert !@user.valid?
+    assert(!@user.valid?)
   end
 
   # 概要: メールがすでに登録されているのバリデーションテスト
@@ -24,6 +24,6 @@ class UserTest < ActiveSupport::TestCase
     @user.skip_password_validation = true
     # 一番最初のユーザーのメールと同じ
     @user[:email] = User.first.email
-    assert !@user.valid?
+    assert(!@user.valid?)
   end
 end

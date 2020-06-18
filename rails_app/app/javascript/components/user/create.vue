@@ -1,11 +1,11 @@
 <template>
   <transition name="modal">
-    <div v-if="loaded" class="modal modal-mask" style="display:block; z-index:1000; overflow-y:scroll;">
+    <div class="modal modal-mask" style="display:block; z-index:1000; overflow-y:scroll;">
       <div class="modal-dialog" role="document" style="width:70%; heigth: 80%;">
         <div class="modal-content modal-wrapper">
           <div class="modal-header">
             <h3 slot="header" class="modal-title">
-              ユーザー編集フォーム
+              ユーザー登録フォーム
               <button
                 type="button"
                 class="close"
@@ -27,14 +27,14 @@
           <div class="modal-body">
             <div class="field">
               <label class="required">メールアドレス</label>
-              <el-input placeholder="メールアドレスを入力してください" id="email" v-model="form['email']"></el-input>
+              <el-input placeholder="メールアドレスを入力してください" id="create-email" v-model="form['email']"></el-input>
             </div>
           </div>
 
           <div class="modal-body">
             <div class="field">
               <label class="required">パスワード</label>
-              <el-input placeholder="変更時のみパスワードを入力してください" id="password" v-model="form['password']"></el-input>
+              <el-input placeholder="変更時のみパスワードを入力してください" id="create-password" v-model="form['password']"></el-input>
             </div>
           </div>
 
@@ -52,7 +52,7 @@
                 <li v-for="e in errors" :key="e">{{ e }}</li>
               </ul>
             </div>
-            <el-button type="primary" id="submit-btn" @click="onSubmit">編集</el-button>
+            <el-button type="primary" id="submit-btn" @click="onSubmit">登録</el-button>
             <el-button type="plain" @click="onClose">閉じる</el-button>
           </div>
         </div>
@@ -76,10 +76,8 @@
     },
   })
 
-  export default class UserEdit extends Vue {
-    @Prop() info!: Object
+  export default class UserCreate extends Vue {
     private modal_status: boolean = false
-    private loaded: boolean = false
     private errors: String[] = []
     private form: Object = {
       user_name: null,
@@ -89,13 +87,6 @@
     private confirm_password: String = ""
 
     created(): void{
-      this.set_init_data(this.info)
-    }
-
-    set_init_data(info: Object): void{
-      this.form["user_name"] = info["user_name"]
-      this.form["email"] = info["email"]
-      this.loaded = true
       modal_back.lock();
     }
 
@@ -108,31 +99,26 @@
 
       const params = {
         user: {
-          id: this.info["user_id"],
           name: this.form["user_name"],
-          email: this.form["email"]
+          email: this.form["email"],
+          password: this.form["password"]
         }
       }
-      // パスワードが入力された時のみパラメーターに含める
-      if(this.form["password"] !== ""){
-        params['user']['password'] = this.form["password"]
-      }
 
-      http.post('/users/update', params)        
+      http.post('/users/create', params)        
         .then(this.successFetch)        
         .catch(this.errorFetch);   
     }
 
     successFetch(): void{
-      this.onReload();
       this.onClose();
       this.notice_success();
     }
 
     notice_success() :void{
       Notification.success({
-        title: "編集完了", 
-        message: "ユーザー情報を編集しました。", 
+        title: "登録完了", 
+        message: "ユーザー情報を登録しました。", 
         type: "success",
         position: "top-left",
         offset: 100,
@@ -147,7 +133,7 @@
         this.errors = [ "原因不明のエラーが発生しました。開発者に連絡してください" ]
         // エラー通知
         error_notification.to_slack({
-          file_name: "user/edit.vue",
+          file_name: "user/create.vue",
           function_name: "onSubmit()",
           error: err
         });
@@ -163,8 +149,5 @@
     onClose(): void {
       modal_back.unlock();
     }
-
-    @Emit('on-reload')
-    onReload(): void{ }
   }
 </script>

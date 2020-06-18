@@ -17,14 +17,14 @@ class Article::EditTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # 編集成功メッセージの確認
-    assert page.has_text?('編集完了')
+    assert(page.has_text?('編集完了'))
     # 表示の確認
-    assert page.has_text?('編集後タイトル')
-    assert page.has_text?('編集後内容')
+    assert(page.has_text?('編集後タイトル'))
+    assert(page.has_text?('編集後内容'))
 
     # 値の確認
-    assert "編集後タイトル", Article.first.title
-    assert "編集後内容", Article.first.content
+    assert_equal("編集後タイトル", Article.first.title)
+    assert_equal("編集後内容", Article.first.content)
   end
 
   test "should validate to update article" do
@@ -43,11 +43,11 @@ class Article::EditTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # エラーメッセージの確認
-    assert page.has_text?('タイトルを入力してください')
-    assert page.has_text?('内容を入力してください')
+    assert(page.has_text?('タイトルを入力してください'))
+    assert(page.has_text?('内容を入力してください'))
 
     # 値が変更されていないことを確認
-    assert article.title, Article.first.title
-    assert article.content, Article.first.content
+    assert_equal(article.title, Article.first.title)
+    assert_equal(article.content, Article.first.content)
   end
 end

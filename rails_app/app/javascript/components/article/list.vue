@@ -11,14 +11,15 @@
           </a>
         </template>
       </el-table-column>
-      <el-table-column prop="created_at" :min-width="15" label="作成日" sortable/>
+      <el-table-column prop="created_at" :min-width="15" label="作成日" :formatter="format_datatime" sortable/>
     </el-table>
   </div>
 </template>
 
 <script lang="ts">
-  import { Table, TableColumn } from 'element-ui'
-  import { Component, Prop, Vue, Emit } from "vue-property-decorator"
+  import { Table, TableColumn } from "element-ui";
+  import { Component, Prop, Vue, Emit } from "vue-property-decorator";
+  import table_formatter from "../../libs/table_formatter";
 
   @Component({
     components: {
@@ -29,6 +30,8 @@
 
   export default class List extends Vue {
     @Prop() info!: Object[]
+
+    private format_datatime:(r: any, c:any, d:any) => string = table_formatter.datetime
 
     open_detail_page(article_id: number): void {
       window.open( '/article_details?article_id=' + article_id)

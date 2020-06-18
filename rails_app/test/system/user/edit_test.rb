@@ -20,15 +20,14 @@ class User::EditTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # 編集成功メッセージの確認
-    assert page.has_text?('編集完了')
+    assert(page.has_text?('編集完了'))
 
     # 表示の確認
-    assert page.has_text?('編集太郎')
+    assert(page.has_text?('編集太郎'))
 
     # 値の確認
-    assert "編集太郎", User.first.name
-    assert "edit_user_mail@test.com", User.first.email
-    assert "Test123456", User.first.password
+    assert_equal("編集太郎", User.first.name)
+    assert_equal("edit_user_mail@test.com", User.first.email)
   end
 
   test "should validate to update user" do
@@ -47,9 +46,9 @@ class User::EditTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # エラーメッセージの確認
-    assert page.has_text?('ユーザー名を入力してください')
+    assert(page.has_text?('ユーザー名を入力してください'))
 
     # 値が変更されていないことを確認
-    assert user.name, User.first.name
+    assert_equal(user.name, User.first.name)
   end
 end

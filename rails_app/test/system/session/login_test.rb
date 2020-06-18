@@ -13,7 +13,7 @@ class SessionLoginTest < ApplicationSystemTestCase
     # ログインボタン押下
     page.find("#submit", wait: 10).click()
 
-    assert page.has_text?('ログインしました')
+    assert(page.has_text?('ログインしました'))
   end
 
   test "should not login with uncorrect email" do
@@ -27,7 +27,7 @@ class SessionLoginTest < ApplicationSystemTestCase
     # ログインボタン押下
     page.find("#submit", wait: 10).click()
 
-    assert page.has_text?('メールアドレスが正しくありません')
+    assert(page.has_text?('メールアドレスが正しくありません'))
   end
 
   test "should not login with uncorrect password" do
@@ -41,6 +41,6 @@ class SessionLoginTest < ApplicationSystemTestCase
     # ログインボタン押下
     page.find("#submit", wait: 10).click()
 
-    assert page.has_text?('パスワードが正しくありません')
+    assert(page.has_text?('パスワードが正しくありません'))
   end
 end

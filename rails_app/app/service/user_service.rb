@@ -8,6 +8,10 @@ class UserService < ApplicationService
       User.excute_for_detail_sql(user_id)
     end
 
+    def create params
+      User.create!(params)
+    end
+
     def update params
       user = User.find(params[:id])
       user_params = make_update_params(params)

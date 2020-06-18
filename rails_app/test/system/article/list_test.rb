@@ -5,7 +5,7 @@ class Article::ListTest < ApplicationSystemTestCase
   test "should get article page" do
     visit "/articles"
 
-    assert page.has_text?('記事一覧')
+    assert(page.has_text?('記事一覧'))
   end
 
   test "should work searching function" do
@@ -18,8 +18,8 @@ class Article::ListTest < ApplicationSystemTestCase
     page.first("#submit-btn", wait: 10).click()
 
     # 一件だけ取得している
-    assert page.has_text?('(1件)')
+    assert(page.has_text?('(1件)'))
     # タイトル40が表示されている
-    assert page.has_text?('タイトル40')
+    assert(page.has_text?('タイトル40'))
   end
 end
