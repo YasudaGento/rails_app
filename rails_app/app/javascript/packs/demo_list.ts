@@ -3,7 +3,7 @@ import lang from 'element-ui/lib/locale/lang/ja'
 import locale from 'element-ui/lib/locale'
 import List from "../components/demo_list/list.vue";
 import http from '../libs/http.ts'
-import param_maker from '../libs/param_maker.ts'
+import param_maker from '../libs/param_maker.js'
 
 locale.use(lang)
 type Parameter = { [s: string]: any };

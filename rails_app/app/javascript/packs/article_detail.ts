@@ -5,7 +5,7 @@ import http from '../libs/http.ts';
 import error_notification from '../libs/error_notification.ts';
 import { Loading } from 'element-ui';
 import List from '../components/article/detail_list.vue';
-import param_maker from '../libs/param_maker.ts';
+import param_maker from '../libs/param_maker.js';
 
 locale.use(lang)
 type Parameter = { [s: string]: any };

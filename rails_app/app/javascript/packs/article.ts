@@ -4,7 +4,7 @@ import locale from 'element-ui/lib/locale';
 import List from '../components/article/list.vue';
 import Search from '../components/article/search.vue';
 import http from '../libs/http.ts';
-import param_maker from '../libs/param_maker.ts';
+import param_maker from '../libs/param_maker.js';
 import error_notification from '../libs/error_notification.ts';
 import { Loading } from 'element-ui';
 

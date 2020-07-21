@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   class << self
     def table_name
-      return "rails_app_production.users" if Rails.env == "production"
+      return "rails_app_db.users" if Rails.env == "production"
       return "rails_app_test.users" if Rails.env == "test"
       return "rails_app_development.users"
     end

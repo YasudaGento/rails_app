@@ -5,7 +5,7 @@ import List from '../components/user/list.vue';
 import Search from '../components/user/search.vue';
 import Pagination from '../components/ui/pagination_btn.vue';
 import http from '../libs/http.ts';
-import param_maker from '../libs/param_maker.ts';
+import param_maker from '../libs/param_maker.js';
 import error_notification from '../libs/error_notification.ts';
 import { Loading } from 'element-ui';
 

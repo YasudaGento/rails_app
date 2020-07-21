@@ -7,7 +7,12 @@
     "module": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "esModuleInterop": true,
+    "baseUrl": "./app/javascript/",
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "exclude": [
     "**/*.spec.ts",
