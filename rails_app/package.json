@@ -30,7 +30,7 @@
     "jest": "^24.8.0",
     "vue-class-component": "^7.2.3",
     "vue-jest": "^3.0.4",
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "3.1.11"
   },
   "scripts": {
     "lint": "eslint",
