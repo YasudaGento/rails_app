@@ -16,6 +16,9 @@ jobs:
           name: waiting DB connecting
           command: sleep 10
       - run:
+          name: check
+          command: ls
+      - run:
           name: Set Up DB
           command: docker exec rails_app rails db:migrate:reset RAILS_ENV=test
       - run:
