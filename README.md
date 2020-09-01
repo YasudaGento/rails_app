@@ -1,6 +1,8 @@
 # ブログサイト rails blog application
 ## Overview
 RailsとVueで作成した簡易のブログサイトです。Docker常にサーバーサイド言語としてRuby on Rails、フロントエンドをVue.jsで作成しています。本番用デプロイサーバーとしてAWSのEC2、本番用DBにRDSを使用しています。
+
+This is blog web site coding by Rails and Vue.js. EC2 server of AWS is used as a depoling server and RDS is used as a production database 
 ## Environment
 
 ### Programing Langeage
