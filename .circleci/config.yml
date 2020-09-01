@@ -7,17 +7,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Dockerコンテナのビルド
+          name: Build Docker Container
           command: docker-compose build
       - run:
-          name: Dockerコンテナの起動
+          name: Up Docker Compose
           command: docker-compose up -d
       - run:
-          name: db接続を待機
+          name: waiting DB connecting
           command: sleep 10
       - run:
-          name: データベースのセットアップ
-          command: docker-compose exec web bundle exec rails db:migrate RAILS_ENV=test
+          name: Set Up DB
+          command: docker-compose exec rails_app bundle exec rails db:migrate RAILS_ENV=test
       - run:
-          name: Dockerコンテナの停止
+          name: Down Docker Container
           command: docker-compose down
