@@ -16,7 +16,9 @@ jobs:
           command: docker-compose up -d
       - run:
          name: Wait for DB
-         command: dockerize -wait tcp://localhost:3306 -timeout 1m
+         command: |
+            docker run --network my_network \
+              jwilder/dockerize -wait http://my_service/about/ -timeout 1m -wait-retry-interval 5s
       - run:
           name: Set Up DB
           command: docker exec -it rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
