@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="UserTest" filepath="/rails_app/test/models/user_test.rb" skipped="0" failures="0" errors="0" tests="3" assertions="3" time="0.024858900003891904">
-    <testcase name="test_should_validate_when_email_is_nil" lineno="16" classname="UserTest" assertions="1" time="0.008961300001828931">
+  <testsuite name="UserTest" filepath="/rails_app/test/models/user_test.rb" skipped="0" failures="0" errors="0" tests="3" assertions="3" time="1.6049059000069974">
+    <testcase name="test_should_validate_when_email_already_exsists" lineno="23" classname="UserTest" assertions="1" time="1.5833755000057863">
     </testcase>
-    <testcase name="test_should_validate_when_name_is_nil" lineno="9" classname="UserTest" assertions="1" time="0.007117599998309743">
+    <testcase name="test_should_validate_when_email_is_nil" lineno="16" classname="UserTest" assertions="1" time="0.013959999996586703">
     </testcase>
-    <testcase name="test_should_validate_when_email_already_exsists" lineno="23" classname="UserTest" assertions="1" time="0.00878000000375323">
+    <testcase name="test_should_validate_when_name_is_nil" lineno="9" classname="UserTest" assertions="1" time="0.007570400004624389">
     </testcase>
   </testsuite>
 </testsuites>

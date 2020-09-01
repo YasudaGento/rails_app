@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ArticleTest" filepath="/rails_app/test/models/article_test.rb" skipped="0" failures="0" errors="0" tests="3" assertions="3" time="1.770797400007723">
-    <testcase name="test_should_validate_when_title_is_nil" lineno="14" classname="ArticleTest" assertions="1" time="1.760730500005593">
+  <testsuite name="ArticleTest" filepath="/rails_app/test/models/article_test.rb" skipped="0" failures="0" errors="0" tests="3" assertions="3" time="0.09382419999747071">
+    <testcase name="test_should_validate_when_title_is_nil" lineno="14" classname="ArticleTest" assertions="1" time="0.06753749999916181">
     </testcase>
-    <testcase name="test_test_case_which_has_all_col" lineno="9" classname="ArticleTest" assertions="1" time="0.004875400001765229">
+    <testcase name="test_test_case_which_has_all_col" lineno="9" classname="ArticleTest" assertions="1" time="0.018638200010173023">
     </testcase>
-    <testcase name="test_should_validate_when_content_is_nil" lineno="20" classname="ArticleTest" assertions="1" time="0.005191500000364613">
+    <testcase name="test_should_validate_when_content_is_nil" lineno="20" classname="ArticleTest" assertions="1" time="0.007648499988135882">
     </testcase>
   </testsuite>
 </testsuites>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ArticleDetailsControllerTest" filepath="/rails_app/test/controllers/article_details_controller_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="7" time="0.06768040001043119">
+    <testcase name="test_should_get_article_detail_info" lineno="4" classname="ArticleDetailsControllerTest" assertions="7" time="0.06768040001043119">
+    </testcase>
+  </testsuite>
+</testsuites>
