@@ -1,60 +1,23 @@
-version: 2.1
-
+version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.5.1-node-browsers
-        environment:
-          RAILS_ENV: test
+    # docker-composeがインストール済みの仮想マシンをプル
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
-      - restore_cache:
-          name: restore bundle install
-          keys: 
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
       - run:
-          name: bundle installを実行
-          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          name: cache bundle install
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-  
-  test:
-    docker:
-      - image: circleci/ruby:2.5.1-node-browsers
-        environment:
-          RAILS_ENV: test
-      - image: circleci/mysql:5.6
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: rails_app_test
-    steps:
-      - checkout
-      - restore_cache:
-          name: restore bundle install
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          name: Dockerコンテナのビルド
+          command: docker-compose build
       - run:
-          name: bundle installを実行
-          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+          name: Dockerコンテナの起動
+          command: docker-compose up -d
       - run:
-          name: wait DB start up
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+          name: db接続を待機
+          command: sleep 10
       - run:
-          name: set up DB
-          command: bundle exec rake db:schema:load
-      - run: 
-          name: rails test
-          command: bundle exec rails test
-
-workflows:
-  version: 2
-  workflows:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+          name: データベースのセットアップ
+          command: docker-compose exec web bundle exec rails db:migrate RAILS_ENV=test
+      - run:
+          name: Dockerコンテナの停止
+          command: docker-compose down
