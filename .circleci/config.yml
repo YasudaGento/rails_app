@@ -6,7 +6,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
-    working_directory: ~/rails_app
+    working_directory: ~/rails_app/rails_app
     steps:
       - checkout
       - restore_cache:
@@ -33,7 +33,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_DATABASE: rails_app_test
-    working_directory: ~/rails_app
+    working_directory: ~/rails_app/rails_app
     steps:
       - checkout
       - restore_cache:
