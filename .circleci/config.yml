@@ -15,8 +15,14 @@ jobs:
           name: Up Docker Compose
           command: docker-compose up -d
       - run:
-         name: Wait for DB
-         command: dockerize -wait tcp://127.0.0.1:3306 -timeout 60s
+          name: check
+          command: |
+            docker ps
+            docker images
+      - run:
+          name: Wait for DB
+        #  command: dockerize -wait tcp://127.0.0.1:3306 -timeout 60s
+          command: sleep 60
       - run:
           name: Set Up DB
           command: |
