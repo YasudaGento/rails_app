@@ -29,7 +29,7 @@ jobs:
           command: docker exec -it rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
       - run:
           name: DB Seed
-          command: docker exec -it rails_app bundle exec rails db:seed
+          command: docker exec -it rails_app bundle exec rails db:seed RAILS_ENV=test
       - run:
           name: Down Docker Container
           command: docker-compose down
