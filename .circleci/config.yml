@@ -1,35 +1,34 @@
 version: 2
 jobs:
   build:
-    # docker-composeがインストール済みの仮想マシンをプル
     machine:
       image: circleci/classic:edge
     steps:
       - checkout
+      - run:
+          name: Setup dockerize
+          command: bash .circleci/setup_dockerize.sh
       - run:
           name: Build Docker Container
           command: docker-compose build
       - run:
           name: Up Docker Compose
           command: docker-compose up -d
-      - run:
-          name: waiting DB connecting
-          command: sleep 60
-      - run:
-          name: check
-          command: docker ps
-      - run:
-          name: check2
-          command: docker images
       # - run:
-      #    name: Wait for DB
-      #    command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      #     name: waiting DB connecting
+      #     command: sleep 60
+      - run:
+         name: Wait for DB
+         command: dockerize -wait tcp://localhost:27017 -timeout 1m
       - run:
           name: Set Up DB
           command: docker exec -it rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
       - run:
           name: DB Seed
           command: docker exec -it rails_app bundle exec rails db:seed RAILS_ENV=test
+      - run:
+          name: rails test
+          command: docker exec -it rails_app bundle exec rails test
       - run:
           name: Down Docker Container
           command: docker-compose down
