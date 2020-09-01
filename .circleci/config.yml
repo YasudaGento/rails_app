@@ -20,10 +20,10 @@ jobs:
           command: ls
       - run:
           name: Set Up DB
-          command: docker exec rails_app rails db:migrate:reset RAILS_ENV=test
+          command: docker exec -it rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
       - run:
           name: DB Seed
-          command: docker exec rails_app rails db:seed
+          command: docker exec -it rails_app bundle exec rails db:seed
       - run:
           name: Down Docker Container
           command: docker-compose down
