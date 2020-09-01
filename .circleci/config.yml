@@ -1,42 +1,62 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          RAILS_ENV: test
     working_directory: ~/rails_app
-
     steps:
       - checkout
-
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "Gemfile.lock" }}
-      #       - v1-dependencies-
+      - restore_cache:
+          name: restore bundle install
+          keys: 
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       - run:
-          name: install dependencies
-          command: |
-            gem install bundler -v 2.0.2
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-
+          name: bundle installを実行
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
+          name: cache bundle install
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
-      # run tests
+  
+  test:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          RAILS_ENV: test
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: rails_app_test
+    working_directory: ~/rails_app
+    steps:
+      - checkout
+      - restore_cache:
+          name: restore bundle install
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
-          name: run tests
-          command: |
-            bundle exec rails test
+          name: bundle installを実行
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run:
+          name: wait DB start up
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      - run:
+          name: set up DB
+          command: bundle exec rake db:schema:load
+      - run: 
+          name: rails test
+          command: bundle exec rails test
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+workflows:
+  version: 2
+  workflows:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
