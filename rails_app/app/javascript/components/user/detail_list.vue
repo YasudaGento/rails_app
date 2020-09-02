@@ -46,7 +46,7 @@
         </el-aside>
         
         <el-table :data="detail_info" max-height="700" border style="width:100%">
-          <el-table-column prop="title" :min-width="80" label="タイトル(最新10県表示)" sortable>
+          <el-table-column prop="title" :min-width="80" label="タイトル(最新10件表示)" sortable>
             <template slot-scope="scope">
               <a @click="open_article_detail_page(scope.row.article_id)" class="all-item-link">
                 {{scope.row.title}}

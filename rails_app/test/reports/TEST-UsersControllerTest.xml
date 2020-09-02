@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="UsersControllerTest" filepath="/rails_app/test/controllers/users_controller_test.rb" skipped="0" failures="0" errors="0" tests="10" assertions="31" time="0.26778989999729674">
+    <testcase name="test_should_validate_when_update_password_less_than_6_letters" lineno="91" classname="UsersControllerTest" assertions="2" time="0.07464589999290183">
+    </testcase>
+    <testcase name="test_should_create_user" lineno="157" classname="UsersControllerTest" assertions="5" time="0.038030000010621734">
+    </testcase>
+    <testcase name="test_should_get_only_a_searched_record" lineno="17" classname="UsersControllerTest" assertions="2" time="0.013632400005008094">
+    </testcase>
+    <testcase name="test_should_not_update_user_info" lineno="66" classname="UsersControllerTest" assertions="4" time="0.02181229999405332">
+    </testcase>
+    <testcase name="test_should_validate_when_update_password_dosent_include_number_and_string" lineno="113" classname="UsersControllerTest" assertions="2" time="0.01965260000724811">
+    </testcase>
+    <testcase name="test_should_validate_when_update_password_is_empty" lineno="135" classname="UsersControllerTest" assertions="2" time="0.01637519999349024">
+    </testcase>
+    <testcase name="test_should_update_user_info" lineno="42" classname="UsersControllerTest" assertions="5" time="0.028085199999623">
+    </testcase>
+    <testcase name="test_should_get_right_status_when_seraching_reslut_is_zero" lineno="30" classname="UsersControllerTest" assertions="2" time="0.010608099997625686">
+    </testcase>
+    <testcase name="test_should_get_list" lineno="4" classname="UsersControllerTest" assertions="3" time="0.022429999997257255">
+    </testcase>
+    <testcase name="test_should_not_create_user_when_user's_mail_address_is_already_added" lineno="180" classname="UsersControllerTest" assertions="4" time="0.02251819999946747">
+    </testcase>
+  </testsuite>
+</testsuites>

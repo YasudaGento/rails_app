@@ -34,7 +34,7 @@ eslint:
 
 .PHONY: rubocop
 rubocop:
-	@docker exec rails_app rubocop --lint --fail-level W --display-only-fail-level-offenses
+	@docker exec rails_app bundle exec rubocop --lint --fail-level W --display-only-fail-level-offenses
 
 .PHONY: jest
 jest:

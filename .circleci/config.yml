@@ -1,15 +1,37 @@
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
-
+version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: Setup dockerize
+          command: bash .circleci/setup_dockerize.sh
+      - run:
+          name: Build Docker Container
+          command: docker-compose build
+      - run:
+          name: Up Docker Compose
+          command: docker-compose up -d
+      - run:
+          name: Wait for DB
+          command: sleep 30
+      - run:
+          name: Set Up DB
+          command: |
+            docker exec rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
+            docker exec rails_app bundle exec rails db:seed RAILS_ENV=test
+            docker exec rails_app bundle exec yarn install
+      - run:
+          name: Eslint
+          command: make eslint
+      - run:
+          name: Rubocop
+          command: make rubocop
+      - run:
+          name: rails test
+          command: docker exec -it rails_app bundle exec rails test
+      - run:
+          name: Down Docker Container
+          command: docker-compose down
