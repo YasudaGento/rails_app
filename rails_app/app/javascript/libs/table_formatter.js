@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 const NO_INPUT_MESSAGE = " 未入力";
 
 const table_formatter = {
