@@ -16,7 +16,13 @@ This is blog web site coding by Rails and Vue.js. EC2 server of AWS is used as a
 ### Infrastructure/Server
 - Docker 18.09.2
 - AWS EC2
+
+### Database
 - AWS RDS
+- Redis
+
+### Web server
+- Nginx
 
 ### CI/CD
-- CircleCI (実装中)
+- CircleCI
