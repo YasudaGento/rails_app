@@ -21,21 +21,22 @@ jobs:
             docker images
       - run:
           name: Wait for DB
-          command: sleep 60
+          command: sleep 30
       - run:
           name: Set Up DB
           command: |
-            docker exec -it rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
-            docker exec -it rails_app bundle exec rails db:seed RAILS_ENV=test
-      - run:
-          name: Eslint
-          command: make eslint
+            docker exec rails_app bundle exec rails db:migrate:reset RAILS_ENV=test
+            docker exec rails_app bundle exec rails db:seed RAILS_ENV=test
+            docker exec rails_app bundle exec yarn install
       - run:
           name: Rubocop
           command: make rubocop
       - run:
           name: rails test
           command: docker exec -it rails_app bundle exec rails test
+      - run:
+          name: Eslint
+          command: make eslint
       - run:
           name: Down Docker Container
           command: docker-compose down
