@@ -5,6 +5,7 @@ class ArticleDetailsControllerTest < ActionDispatch::IntegrationTest
     get article_details_get_path, params: { article_id: Article.first.id }
     res = JSON.parse(@response.body)
    
+    assert_response(200)
     # 値を確認
     assert_equal(1, res["article_count"])
     article = Article.first

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="User::ListTest" filepath="/rails_app/test/system/user/list_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="2.072035200006212">
+    <testcase name="test_should_get_user_page" lineno="5" classname="User::ListTest" assertions="1" time="2.072035200006212">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -20,8 +20,7 @@ class ArticleService < ApplicationService
       article.save!(params)
     end
 
-    def get_article_count article_id
-      user_id = Article.find(article_id).user_id
+    def get_article_count user_id
       Article.where("user_id = #{user_id}").count
     end
   end

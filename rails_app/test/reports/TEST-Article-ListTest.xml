@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Article::ListTest" filepath="/rails_app/test/system/article/list_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="3" time="4.358894799996051">
+    <testcase name="test_should_work_searching_function" lineno="11" classname="Article::ListTest" assertions="2" time="2.5177387000003364">
+    </testcase>
+    <testcase name="test_should_get_article_page" lineno="5" classname="Article::ListTest" assertions="1" time="1.8411560999957146">
+    </testcase>
+  </testsuite>
+</testsuites>

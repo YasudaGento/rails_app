@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="User::EditTest" filepath="/rails_app/test/system/user/edit_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="6" time="6.078094700016663">
+    <testcase name="test_should_validate_to_update_user" lineno="33" classname="User::EditTest" assertions="2" time="2.3951327000104357">
+    </testcase>
+    <testcase name="test_should_edit_user" lineno="5" classname="User::EditTest" assertions="4" time="3.6829620000062278">
+    </testcase>
+  </testsuite>
+</testsuites>
