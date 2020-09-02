@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Article::CreateTest" filepath="/rails_app/test/system/article/create_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="8" time="7.79284879998886">
-    <testcase name="test_should_create_article" lineno="5" classname="Article::CreateTest" assertions="4" time="3.7214437999937218">
+  <testsuite name="Article::CreateTest" filepath="/rails_app/test/system/article/create_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="8" time="6.858467399986694">
+    <testcase name="test_should_create_article" lineno="5" classname="Article::CreateTest" assertions="4" time="4.4765065999818034">
     </testcase>
-    <testcase name="test_should_validate_to_create_article" lineno="30" classname="Article::CreateTest" assertions="4" time="4.0714049999951385">
+    <testcase name="test_should_validate_to_create_article" lineno="30" classname="Article::CreateTest" assertions="4" time="2.38196080000489">
     </testcase>
   </testsuite>
 </testsuites>

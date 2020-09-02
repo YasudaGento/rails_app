@@ -31,7 +31,7 @@ describe("test about article list", () => {
     await flushPromise()
     expect(wrapper.find(".el-table__body").text()).toContain("テスト太郎")
     expect(wrapper.find(".el-table__body").text()).toContain("test_title")
-    expect(wrapper.find(".el-table__body").text()).toContain("2020-01-01T12:00:00.000")
+    expect(wrapper.find(".el-table__body").text()).toContain("20/01/01 12:00")
   });
   
 })

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="User::CreateTest" filepath="/rails_app/test/system/user/create_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="8" time="66.77381319999404">
-    <testcase name="test_should_create_user" lineno="5" classname="User::CreateTest" assertions="5" time="63.367600800003856">
+  <testsuite name="User::CreateTest" filepath="/rails_app/test/system/user/create_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="8" time="7.670922099991003">
+    <testcase name="test_should_create_user" lineno="5" classname="User::CreateTest" assertions="5" time="3.4236135999963153">
     </testcase>
-    <testcase name="test_should_validate_when_password_and_password_confirm_are_not_same" lineno="35" classname="User::CreateTest" assertions="3" time="3.4062123999901814">
+    <testcase name="test_should_validate_when_password_and_password_confirm_are_not_same" lineno="35" classname="User::CreateTest" assertions="3" time="4.247308499994688">
     </testcase>
   </testsuite>
 </testsuites>

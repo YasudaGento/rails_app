@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="DemoListTest" filepath="/rails_app/test/system/demo_list_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="1.434144800005015">
-    <testcase name="test_demo_test" lineno="5" classname="DemoListTest" assertions="1" time="1.434144800005015">
+  <testsuite name="DemoListTest" filepath="/rails_app/test/system/demo_list_test.rb" skipped="0" failures="0" errors="0" tests="1" assertions="1" time="1.4662471000046935">
+    <testcase name="test_demo_test" lineno="5" classname="DemoListTest" assertions="1" time="1.4662471000046935">
     </testcase>
   </testsuite>
 </testsuites>
