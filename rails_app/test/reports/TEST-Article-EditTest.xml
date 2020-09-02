@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Article::EditTest" filepath="/rails_app/test/system/article/edit_test.rb" skipped="0" failures="0" errors="0" tests="2" assertions="9" time="9.7019804000156">
+    <testcase name="test_should_edit_article" lineno="5" classname="Article::EditTest" assertions="5" time="4.882325700018555">
+    </testcase>
+    <testcase name="test_should_validate_to_update_article" lineno="30" classname="Article::EditTest" assertions="4" time="4.819654699997045">
+    </testcase>
+  </testsuite>
+</testsuites>

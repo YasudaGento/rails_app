@@ -5,7 +5,8 @@ class ArticleDetailsController < ApplicationController
 
   def get
     result = ArticleService.get_detail(params[:article_id])
-    article_count = ArticleService.get_article_count(params[:article_id])
+    user_id = Article.find(params[:article_id]).user_id
+    article_count = ArticleService.get_article_count(user_id)
     # ログインユーザーIDの取得
     login_user_id = get_login_user[:id]
     

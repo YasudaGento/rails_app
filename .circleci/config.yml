@@ -27,11 +27,17 @@ jobs:
           name: Eslint
           command: make eslint
       - run:
+          name: JS test
+          command: make jest
+      - run:
           name: Rubocop
           command: make rubocop
       - run:
           name: rails test
           command: docker exec -it rails_app bundle exec rails test
+      - run:
+          name: E2E test
+          command: docker exec -it rails_app bundle exec rails test test/system
       - run:
           name: Down Docker Container
           command: docker-compose down

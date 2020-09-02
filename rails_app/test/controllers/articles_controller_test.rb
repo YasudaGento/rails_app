@@ -5,6 +5,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { q: {} }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # ユーザー50件の取得
     assert_equal(50, (res["info"].length))
     # 投稿者、タイトル、作成日が正しく取得できている
@@ -25,7 +26,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ユーザー0件の取得
-    assert_equal(200, (@response.status))
+    assert_response(200)
     assert_equal(0, (res["info"].length))
   end
 
@@ -35,6 +36,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # ユーザー1件の取得
     assert_equal(1, (res["info"].length))
     # テスト太郎48が取得されている
@@ -47,6 +49,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # 1件の取得
     assert_equal(1, (res["info"].length))
     # テストタイトル49が取得されている
@@ -60,6 +63,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # 3件の取得
     assert_equal(3, (res["info"].length))
     # 5月1日以降のレコードのみ取得している
@@ -78,6 +82,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # 2件の取得
     assert_equal(2, (res["info"].length))
     # 3月17日以前のレコードのみ取得している
@@ -95,6 +100,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # 1件の取得
     assert_equal(1, (res["info"].length))
     # 3月16日のレコードのみ取得している
@@ -112,6 +118,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get articles_get_path, params: { offset:0 , limit: 0, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # 1件の取得
     assert_equal(1, (res["info"].length))
     # 取得データの確認
@@ -139,7 +146,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(200, @response.status)
+    assert_response(200)
     # 値の確認
     assert_equal(params[:article][:title], res["changed"]["title"])
     assert_equal(params[:article][:content], res["changed"]["content"])
@@ -165,7 +172,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("タイトルを入力してください", res["message"][0])
     # 値が更新されていないことを確認
@@ -193,7 +200,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     post articles_create_path, params: params, as: :json
     
     # ステータスの確認
-    assert_equal(200, @response.status)
+    assert_response(200)
     # 値の確認
     assert_equal(1, Article.where(user_id: user_id).length)
     aritcle = Article.find_by(user_id: user_id)
@@ -221,7 +228,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal(0, Article.where(user_id: user_id).length)
     assert_equal("タイトルを入力してください", res["message"][0])

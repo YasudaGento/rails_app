@@ -34,7 +34,7 @@
             <div class="aside-item">
               <tr>
                 <th>投稿数 : </th>
-                <td> {{ this.count }} 件</td>
+                <td> {{ this.article_count }} 件</td>
               </tr>
             </div>
 
@@ -85,7 +85,7 @@
   export default class DetailList extends Vue {
     @Prop() detail_info!: Object[]
     @Prop() login_user_id!: Number
-    @Prop() count!: Number
+    @Prop() article_count!: Number
 
     private format_datatime:(d:string) => string = formatter.datetime
     private table_format_datatime:(r: any, c:any, d:any) => string = table_formatter.datetime

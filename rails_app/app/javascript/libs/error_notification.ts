@@ -1,5 +1,5 @@
 import http from './http';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export default {
   // 関数名: to_slack

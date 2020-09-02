@@ -5,6 +5,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_get_path, params: { offset: 0 , limit: 50, q: {} }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # ユーザー50件の取得
     assert_equal(50, (res["info"].length))
     # ユーザーの作成された最新順に表示されている
@@ -20,6 +21,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_get_path, params: { offset: 0 , limit: 50, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # ユーザー1件の取得
     assert_equal(1, (res["info"].length))
     # テスト太郎48が取得されている
@@ -33,8 +35,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_get_path, params: { offset:0 , limit: 50, q: params }
     res = JSON.parse(@response.body)
     
+    assert_response(200)
     # ユーザー0件の取得
-    assert_equal(200, (@response.status))
     assert_equal(0, (res["info"].length))
   end
 
@@ -56,7 +58,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_update_path, params: params, as: :json
     
     # ステータスの確認
-    assert_equal(200, @response.status)
+    assert_response(200)
     # 値の確認
     assert_equal(params[:user][:name], User.first.name)
     assert_equal(params[:user][:email], User.first.email)
@@ -82,7 +84,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("ユーザー名を入力してください", res["message"][0])
   end
@@ -104,7 +106,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("パスワードは6文字以上で入力してください", res["message"][0])
   end
@@ -126,7 +128,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("パスワードは、半角大文字小文字英数字を含めた文字で入力してください", res["message"][0])
   end
@@ -148,7 +150,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
     
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("パスワードを入力してください", res["message"][0])
   end
@@ -168,7 +170,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_create_path, params: params, as: :json
     
     # ステータスの確認
-    assert_equal(200, @response.status)
+    assert_response(200)
     # 値の確認
     assert_equal(params[:user][:name], User.last.name)
     assert_equal(params[:user][:email], User.last.email)
@@ -192,7 +194,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     res = JSON.parse(@response.body)
 
     # ステータスの確認
-    assert_equal(422, @response.status)
+    assert_response(422)
     # 値の確認
     assert_equal("メールアドレスはすでに存在します", res["message"][0])
     # 件数は元のまま
