@@ -15,11 +15,6 @@ jobs:
           name: Up Docker Compose
           command: docker-compose up -d
       - run:
-          name: check
-          command: |
-            docker ps
-            docker images
-      - run:
           name: Wait for DB
           command: sleep 30
       - run:
@@ -29,14 +24,14 @@ jobs:
             docker exec rails_app bundle exec rails db:seed RAILS_ENV=test
             docker exec rails_app bundle exec yarn install
       - run:
+          name: Eslint
+          command: make eslint
+      - run:
           name: Rubocop
           command: make rubocop
       - run:
           name: rails test
           command: docker exec -it rails_app bundle exec rails test
-      - run:
-          name: Eslint
-          command: make eslint
       - run:
           name: Down Docker Container
           command: docker-compose down
